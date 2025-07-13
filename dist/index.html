@@ -1,0 +1,4522 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="title" content="Discount Manager Pro | Kartikey Gupta">
+    <meta name="description" content="Manage your ecommerce discounts efficiently with Discount Pro. Create, track, and analyze discounts to boost sales and customer engagement.">
+    <meta name="keywords" content="discount, manager, ecommerce, dashboard, kartikey gupta">
+    <link rel="icon" href="./favicon.png" />
+    <link rel="stylesheet" href="./style.css" />
+    <title>Discount Manager Pro | Kartikey Gupta</title>
+
+    <!-- ApexCharts CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+  </head>
+
+  <body class="font-sans">
+    <!-- Header Starts Here -->
+    <header>
+      <div
+        id="upper-header"
+        class="flex justify-between items-center py-4 px-14 border-b border-b-gray-200"
+      >
+        <div class="flex gap-2 items-center">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="text-purple-600"
+          >
+            <path d="M5.5 8.5 9 12l-3.5 3.5L2 12l3.5-3.5Z"></path>
+            <path d="m12 2 3.5 3.5L12 9 8.5 5.5 12 2Z"></path>
+            <path d="M18.5 8.5 22 12l-3.5 3.5L15 12l3.5-3.5Z"></path>
+            <path d="m12 15 3.5 3.5L12 22l-3.5-3.5L12 15Z"></path>
+          </svg>
+          <h1 class="text-xl font-bold">Discount Pro</h1>
+        </div>
+
+        <div class="cursor-pointer">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M18 6 6 18"></path>
+            <path d="m6 6 12 12"></path>
+          </svg>
+        </div>
+      </div>
+
+      <div
+        id="nav-container"
+        class="bg-[#f9fafb] flex justify-between items-center pt-6 px-14"
+      >
+        <nav
+          class="bg-[#f5f5f5] box-content p-1 text-sm rounded-md text-gray-600"
+        >
+          <button
+            type="button"
+            class="nav-btn cursor-pointer box-border w-22 h-8 rounded bg-white text-black"
+            data-target="overview"
+          >
+            Overview
+          </button>
+          <button
+            type="button"
+            class="nav-btn cursor-pointer box-border w-22 h-8 rounded bg-transparent text-gray-600"
+            data-target="bulk"
+          >
+            Bulk
+          </button>
+          <button
+            type="button"
+            class="nav-btn cursor-pointer box-border w-22 h-8 rounded bg-transparent text-gray-600"
+            data-target="bogo"
+          >
+            BOGO
+          </button>
+          <button
+            type="button"
+            class="nav-btn cursor-pointer box-border w-22 h-8 rounded bg-transparent text-gray-600"
+            data-target="cart"
+          >
+            Cart
+          </button>
+          <button
+            type="button"
+            class="nav-btn cursor-pointer box-border w-22 h-8 rounded bg-transparent text-gray-600"
+            data-target="flash-sale"
+          >
+            Flash Sale
+          </button>
+          <button
+            type="button"
+            class="nav-btn cursor-pointer box-border w-22 h-8 rounded bg-transparent text-gray-600"
+            data-target="customer"
+          >
+            Customer
+          </button>
+          <button
+            type="button"
+            class="nav-btn cursor-pointer box-border w-22 h-8 rounded bg-transparent text-gray-600"
+            data-target="bundle"
+          >
+            Bundle
+          </button>
+          <button
+            type="button"
+            class="nav-btn cursor-pointer box-border w-22 h-8 rounded bg-transparent text-gray-600"
+            data-target="settings"
+          >
+            Settings
+          </button>
+        </nav>
+
+        <button
+          id="create-discount-button"
+          class="flex items-center justify-between cursor-pointer bg-purple-600 hover:bg-purple-700 px-3.5 py-1.5 rounded-md text-white"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="mr-2"
+          >
+            <path d="M5 12h14"></path>
+            <path d="M12 5v14"></path>
+          </svg>
+          <span class="tracking-tight text-[15px]">Create New Discount</span>
+        </button>
+      </div>
+    </header>
+    <!-- Header Ends Here -->
+
+    <!-- Dashboard Section Starts Here -->
+    <section id="overview" class="px-14 pt-5 pb-5 bg-[#f9fafb]">
+      <!-- Dashboard Overview Heading -->
+      <div class="flex items-center justify-between">
+        <h2 class="text-2xl font-bold text-gray-700">Dashboard Overview</h2>
+        <select
+          name=""
+          id=""
+          class="bg-white border border-gray-200 rounded-md px-3 py-1 focus:outline-none focus:ring-2 focus:ring-purple-600"
+        >
+          <option value="1">Last 7 days</option>
+          <option value="2" selected="">Last 30 days</option>
+          <option value="3">Last 90 days</option>
+          <option value="4">This year</option>
+        </select>
+      </div>
+
+      <!-- Cards -->
+      <div id="cards" class="flex items-center justify-between gap-6 mt-7">
+        <div
+          class="bg-white border border-gray-200 w-1/4 p-6 rounded-md shadow"
+        >
+          <h4 class="text-[15px] text-gray-500">Total Discounts</h4>
+          <p class="text-2xl font-bold mt-1">24</p>
+          <div class="flex items-center text-green-600 mt-1">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="mr-1"
+            >
+              <path d="m5 12 5 5 9-9"></path>
+            </svg>
+            <span class="text-[13px]">+4 from last month</span>
+          </div>
+        </div>
+        <div
+          class="bg-white border border-gray-200 w-1/4 p-6 rounded-md shadow"
+        >
+          <h4 class="text-[15px] text-gray-500">Active Discounts</h4>
+          <p class="text-2xl font-bold mt-1">12</p>
+          <div class="flex items-center text-green-600 mt-1">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="mr-1"
+            >
+              <path d="m5 12 5 5 9-9"></path>
+            </svg>
+            <span class="text-[13px]">+2 from last month</span>
+          </div>
+        </div>
+        <div
+          class="bg-white border border-gray-200 w-1/4 p-6 rounded-md shadow"
+        >
+          <h4 class="text-[15px] text-gray-500">Discount Usage</h4>
+          <p class="text-2xl font-bold mt-1">1,248</p>
+          <div class="flex items-center text-green-600 mt-1">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="mr-1"
+            >
+              <path d="m5 12 5 5 9-9"></path>
+            </svg>
+            <span class="text-[13px]">+18% from last month</span>
+          </div>
+        </div>
+        <div
+          class="bg-white border border-gray-200 w-1/4 p-6 rounded-md shadow"
+        >
+          <h4 class="text-[15px] text-gray-500">Revenue Generated</h4>
+          <p class="text-2xl font-bold mt-1">$12,450</p>
+          <div class="flex items-center text-green-600 mt-1">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="mr-1"
+            >
+              <path d="m5 12 5 5 9-9"></path>
+            </svg>
+            <span class="text-[13px]">+24% from last month</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Dashboard Graphs -->
+      <div class="flex items-center justify-between gap-6">
+        <div
+          class="w-[65%] p-5 pb-16 border border-gray-200 rounded-lg shadow mt-6 bg-white"
+        >
+          <p class="font-bold text-2xl">Discount Usage Over Time</p>
+          <div id="column-chart" class="mx-8 mt-3"></div>
+          <script>
+            var options = {
+              chart: {
+                type: "bar", // bar = column chart (vertical bars)
+                height: 350,
+              },
+              series: [
+                {
+                  name: "Value",
+                  data: [1200, 1900, 2400, 1800, 2800, 3200],
+                },
+              ],
+              xaxis: {
+                categories: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
+                labels: {
+                  style: {
+                    fontSize: "16px", // ← Increase font size here
+                    colors: ["#000"], // Optional: text color
+                  },
+                },
+              },
+              yaxis: {
+                min: 0,
+                max: 3200,
+                tickAmount: 4,
+                labels: {
+                  style: {
+                    fontSize: "16px", // ← Increase font size here too
+                    colors: ["#000"],
+                  },
+                },
+              },
+              colors: ["#4F46E5"], // Optional: custom bar color
+              plotOptions: {
+                bar: {
+                  borderRadius: 5,
+                  columnWidth: "80%",
+                },
+              },
+            };
+
+            var chart = new ApexCharts(
+              document.querySelector("#column-chart"),
+              options
+            );
+            chart.render();
+          </script>
+        </div>
+
+        <div
+          class="w-[35%] p-5 border border-gray-200 rounded-lg shadow mt-6 bg-white"
+        >
+          <p class="font-bold text-2xl">Discount Types Distribution</p>
+          <div id="pie-chart" class="mx-8 mt-30"></div>
+          <script>
+            var options = {
+              chart: {
+                type: "pie",
+                height: 300,
+              },
+              labels: [
+                "Bulk Discount",
+                "Cart Value",
+                "Customer",
+                "BOGO Deals",
+                "Flash Sale",
+                "Bundle",
+              ],
+              series: [35, 20, 5, 25, 10, 5],
+              colors: [
+                "#8b5cf6",
+                "#eab308",
+                "#f97316",
+                "#f43f5e",
+                "#ec4899",
+                "#6366f1",
+              ],
+              legend: {
+                position: "bottom",
+                horizontalAlign: "left",
+                fontSize: "12px", // Optional: adjust text size
+              },
+              responsive: [
+                {
+                  breakpoint: 480,
+                  options: {
+                    chart: {
+                      width: 300,
+                    },
+                    legend: {
+                      position: "bottom",
+                    },
+                  },
+                },
+              ],
+            };
+
+            var chart = new ApexCharts(
+              document.querySelector("#pie-chart"),
+              options
+            );
+            chart.render();
+          </script>
+        </div>
+      </div>
+
+      <!-- Discount Table -->
+      <div class="p-5 border border-gray-200 rounded-lg shadow mt-6 bg-white">
+        <p class="font-bold text-2xl">Active Discounts</p>
+        <div class="overflow-x-auto flex justify-center mt-5">
+          <table
+            class="min-w-[100%] bg-white border border-gray-200 shadow-md rounded-lg overflow-hidden divide-y divide-gray-200"
+          >
+            <thead class="bg-gray-100 text-gray-700">
+              <tr>
+                <th class="px-6 py-3 text-left text-sm font-semibold">Name</th>
+                <th class="px-6 py-3 text-left text-sm font-semibold">Type</th>
+                <th class="px-6 py-3 text-left text-sm font-semibold">
+                  Status
+                </th>
+                <th class="px-6 py-3 text-left text-sm font-semibold">Usage</th>
+                <th class="px-6 py-3 text-left text-sm font-semibold">
+                  Revenue
+                </th>
+                <th class="px-6 py-3 text-left text-sm font-semibold">
+                  Actions
+                </th>
+              </tr>
+            </thead>
+            <tbody class="text-sm divide-y divide-gray-200">
+              <tr class="hover:bg-gray-50">
+                <td class="px-6 py-3">Summer Sale 25% Off</td>
+                <td class="px-6 py-3">Bulk Discount</td>
+                <td class="px-6 py-3">
+                  <div
+                    class="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-green-100 text-green-800 hover:bg-green-100"
+                  >
+                    Active
+                  </div>
+                </td>
+                <td class="px-6 py-3">128</td>
+                <td class="px-6 py-3">$3,240</td>
+                <td class="px-6 py-3">
+                  <div class="flex space-x-2">
+                    <button class="text-gray-500 hover:text-blue-700 cursor-pointer">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
+                        <path
+                          d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"
+                        ></path>
+                        <path d="m15 5 4 4"></path>
+                      </svg></button
+                    ><button class="text-gray-500 hover:text-red-600 cursor-pointer">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
+                        <path d="M3 6h18"></path>
+                        <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path>
+                        <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"></path>
+                        <path d="M10 11v6"></path>
+                        <path d="M14 11v6"></path>
+                      </svg>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+              <tr class="hover:bg-gray-50">
+                <td class="px-6 py-3">Buy 1 Get 1 Free T-shirts</td>
+                <td class="px-6 py-3">BOGO Deal</td>
+                <td class="px-6 py-3">
+                  <div
+                    class="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-green-100 text-green-800 hover:bg-green-100"
+                  >
+                    Active
+                  </div>
+                </td>
+                <td class="px-6 py-3">87</td>
+                <td class="px-6 py-3">$2,175</td>
+                <td class="px-6 py-3">
+                  <div class="flex space-x-2">
+                    <button class="text-gray-500 hover:text-blue-700 cursor-pointer">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
+                        <path
+                          d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"
+                        ></path>
+                        <path d="m15 5 4 4"></path>
+                      </svg></button
+                    ><button class="text-gray-500 hover:text-red-600 cursor-pointer">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
+                        <path d="M3 6h18"></path>
+                        <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path>
+                        <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"></path>
+                        <path d="M10 11v6"></path>
+                        <path d="M14 11v6"></path>
+                      </svg>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+              <tr class="hover:bg-gray-50">
+                <td class="px-6 py-3">Spend $100 Get $20 Off</td>
+                <td class="px-6 py-3">Cart Value</td>
+                <td class="px-6 py-3">
+                  <div
+                    class="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-green-100 text-green-800 hover:bg-green-100"
+                  >
+                    Active
+                  </div>
+                </td>
+                <td class="px-6 py-3">64</td>
+                <td class="px-6 py-3">$4,800</td>
+                <td class="px-6 py-3">
+                  <div class="flex space-x-2">
+                    <button class="text-gray-500 hover:text-blue-700 cursor-pointer">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
+                        <path
+                          d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"
+                        ></path>
+                        <path d="m15 5 4 4"></path>
+                      </svg></button
+                    ><button class="text-gray-500 hover:text-red-600 cursor-pointer">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
+                        <path d="M3 6h18"></path>
+                        <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path>
+                        <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"></path>
+                        <path d="M10 11v6"></path>
+                        <path d="M14 11v6"></path>
+                      </svg>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+              <tr class="hover:bg-gray-50">
+                <td class="px-6 py-3">Flash Sale - 24 Hours Only</td>
+                <td class="px-6 py-3">Flash Sale</td>
+                <td class="px-6 py-3">
+                  <div
+                    class="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-blue-100 text-blue-800 hover:bg-blue-100"
+                  >
+                    Scheduled
+                  </div>
+                </td>
+                <td class="px-6 py-3">0</td>
+                <td class="px-6 py-3">$0</td>
+                <td class="px-6 py-3">
+                  <div class="flex space-x-2">
+                    <button class="text-gray-500 hover:text-blue-700 cursor-pointer">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
+                        <path
+                          d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"
+                        ></path>
+                        <path d="m15 5 4 4"></path>
+                      </svg></button
+                    ><button class="text-gray-500 hover:text-red-600 cursor-pointer">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
+                        <path d="M3 6h18"></path>
+                        <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path>
+                        <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"></path>
+                        <path d="M10 11v6"></path>
+                        <path d="M14 11v6"></path>
+                      </svg>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+    <!-- Dashboard Section Ends Here -->
+
+    <!-- Bulk Section Starts Here -->
+    <section id="bulk" class="px-14 pt-5 pb-28 bg-[#f9fafb]">
+      <div class="flex justify-between items-center">
+        <h2 class="text-2xl font-bold text-gray-800">
+          Bulk Discount & Tiered Pricing
+        </h2>
+
+        <button
+          id="create-new-button"
+          class="flex items-center justify-between cursor-pointer bg-black hover:bg-gray-700 px-3.5 py-2 rounded-md text-white"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="mr-2"
+          >
+            <path d="M5 12h14"></path>
+            <path d="M12 5v14"></path>
+          </svg>
+          <span class="tracking-tight text-[15px]">Create New</span>
+        </button>
+      </div>
+
+      <nav
+        class="bg-[#f5f5f5] w-full flex justify-between items-center mt-6 box-content p-1 text-sm rounded-md text-gray-600"
+      >
+        <button
+          type="button"
+          class="discount-btn cursor-pointer box-border w-6/12 h-8 rounded bg-white text-black"
+          data-target="create-discount"
+        >
+          Create Discount</button
+        ><button
+          type="button"
+          class="discount-btn cursor-pointer box-border w-6/12 h-8 rounded bg-transparent text-gray-600"
+          data-target="manage-discount"
+        >
+          Manage Discount
+        </button>
+      </nav>
+
+      <!-- Create Bulk Discount -->
+      <main
+        id="create-discount"
+        class="bulk-section bg-white border border-gray-200 rounded-lg px-6 py-4 mt-6"
+      >
+        <h3 class="text-2xl font-bold text-gray-800">Create Bulk Discount</h3>
+
+        <form action="" method="" class="mt-6 text-sm">
+          <!-- First Row -->
+          <div class="flex justify-between items-center gap-6 w-full mt-4">
+            <div class="w-full">
+              <label for="discount-name" class="block">Discount Name</label>
+              <input
+                type="text"
+                name="discount-name"
+                id=""
+                placeholder="Summer Sale 20% Off"
+                class="w-full border border-gray-200 focus:outline-none focus:ring-2 focus:ring-purple-600 px-3 py-1.5 rounded-md"
+              />
+            </div>
+            <div class="w-full">
+              <label for="discount-name" class="block"
+                >Apply to Products/Collection</label
+              >
+              <!-- <input type="text" name="discount-name" id="" placeholder="Summer Sale 20% Off" class="border border-gray-200 focus:outline-none focus:ring-2 focus:ring-purple-600 px-3 py-1.5 rounded-md" /> -->
+              <select
+                name="discount-name"
+                id=""
+                class="w-full border border-gray-200 focus:outline-none focus:ring-2 focus:ring-purple-600 px-3 py-1.5 rounded-md"
+              >
+                <option value="1" selected="">All Products</option>
+                <option value="2">Specific Products</option>
+                <option value="3">Specific Collections</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Second Row -->
+          <div class="flex justify-between items-center gap-6 w-full mt-4">
+            <div class="w-full">
+              <label for="discount-type" class="block">Discount Type</label>
+              <select
+                name="discount-type"
+                id=""
+                class="w-full border border-gray-200 focus:outline-none focus:ring-2 focus:ring-purple-600 px-3 py-1.5 rounded-md"
+              >
+                <option value="1" selected="">Percentage</option>
+                <option value="2">Fixed Amount</option>
+              </select>
+            </div>
+
+            <div class="w-full">
+              <label for="discount-name" class="block">Start Date</label>
+              <input
+                type="date"
+                name="discount-name"
+                id=""
+                placeholder="Summer Sale 20% Off"
+                class="w-full border border-gray-200 focus:outline-none focus:ring-2 focus:ring-purple-600 px-3 py-1.5 rounded-md"
+              />
+            </div>
+          </div>
+
+          <!-- Third Row -->
+          <div class="flex justify-between items-center gap-6 w-full mt-4">
+            <div class="w-full space-y-2">
+              <div class="flex items-center space-x-2">
+                <label class="relative inline-flex items-center cursor-pointer">
+                  <input
+                    type="checkbox"
+                    value=""
+                    class="sr-only peer"
+                    id="auto-apply-toggle"
+                  />
+                  <div
+                    class="w-11 h-6 bg-gray-300 peer-focus:outline-none rounded-full peer peer-checked:bg-black transition duration-200"
+                  ></div>
+                  <div
+                    class="absolute left-0.5 top-0.5 w-5 h-5 bg-white rounded-full transition-transform duration-200 transform peer-checked:translate-x-full"
+                  ></div>
+                </label>
+                <label for="auto-apply-toggle" class="text-gray-800">
+                  Auto-apply discount (no code required)
+                </label>
+              </div>
+
+              <div class="flex items-center space-x-2">
+                <label class="relative inline-flex items-center cursor-pointer">
+                  <input
+                    type="checkbox"
+                    value=""
+                    checked
+                    class="sr-only peer"
+                    id="auto-apply-toggle"
+                  />
+                  <div
+                    class="w-11 h-6 bg-gray-300 peer-focus:outline-none rounded-full peer peer-checked:bg-black transition duration-200"
+                  ></div>
+                  <div
+                    class="absolute left-0.5 top-0.5 w-5 h-5 bg-white rounded-full transition-transform duration-200 transform peer-checked:translate-x-full"
+                  ></div>
+                </label>
+                <label for="auto-apply-toggle" class="text-gray-800">
+                  Show "Buy More, Save More" table on product pages
+                </label>
+              </div>
+            </div>
+
+            <div class="w-full">
+              <label for="discount-name" class="block">End Date</label>
+              <input
+                type="date"
+                name="discount-name"
+                id=""
+                placeholder="Summer Sale 20% Off"
+                class="w-full border border-gray-200 focus:outline-none focus:ring-2 focus:ring-purple-600 px-3 py-1.5 rounded-md"
+              />
+            </div>
+          </div>
+
+          <!-- Fourth Row -->
+          <div>
+            <div class="flex justify-between items-center my-5">
+              <span>Discount Tiers</span>
+              <button
+                id="add-tier-btn"
+                class="border border-gray-200 px-3 py-2 rounded-md cursor-pointer"
+              >
+                Add Tier
+              </button>
+            </div>
+
+            <div
+              id="tiers-container"
+              class="bg-[#f9fafb] w-full px-4 py-4 rounded-lg space-y-4"
+            >
+              <div class="flex justify-between items-center">
+                <p class="w-[45%]">Quantity</p>
+                <p class="w-[45%]">Discount</p>
+                <p class="w-[10%] invisible">Actions</p>
+              </div>
+
+              <div class="flex justify-between items-center">
+                <div class="w-[45%]">
+                  <label for="buy">Buy</label>
+                  <input
+                    type="number"
+                    value="2"
+                    name="buy"
+                    class="w-[80%] bg-white px-3 py-2 border border-gray-200 rounded-md"
+                  />
+                  <label for="buy">or more</label>
+                </div>
+
+                <div class="w-[45%]">
+                  <label for="get">Get</label>
+                  <input
+                    type="number"
+                    value="10"
+                    name="get"
+                    class="w-[80%] bg-white px-3 py-2 border border-gray-200 rounded-md"
+                  />
+                  <label for="get">% off</label>
+                </div>
+
+                <div class="w-[10%] text-right">
+                  <button
+                    class="remove-tier-btn text-gray-500 hover:text-red-600 cursor-pointer"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path d="M3 6h18"></path>
+                      <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path>
+                      <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"></path>
+                      <path d="M10 11v6"></path>
+                      <path d="M14 11v6"></path>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+
+              <div class="flex justify-between items-center">
+                <div class="w-[45%]">
+                  <label for="buy">Buy</label>
+                  <input
+                    type="number"
+                    value="5"
+                    name="buy"
+                    class="w-[80%] bg-white px-3 py-2 border border-gray-200 rounded-md"
+                  />
+                  <label for="buy">or more</label>
+                </div>
+
+                <div class="w-[45%]">
+                  <label for="get">Get</label>
+                  <input
+                    type="number"
+                    value="20"
+                    name="get"
+                    class="w-[80%] bg-white px-3 py-2 border border-gray-200 rounded-md"
+                  />
+                  <label for="get">% off</label>
+                </div>
+
+                <div class="w-[10%] text-right">
+                  <button
+                    class="remove-tier-btn text-gray-500 hover:text-red-600 cursor-pointer"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path d="M3 6h18"></path>
+                      <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path>
+                      <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"></path>
+                      <path d="M10 11v6"></path>
+                      <path d="M14 11v6"></path>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+
+              <div class="flex justify-between items-center">
+                <div class="w-[45%]">
+                  <label for="buy">Buy</label>
+                  <input
+                    type="number"
+                    value="10"
+                    name="buy"
+                    class="w-[80%] bg-white px-3 py-2 border border-gray-200 rounded-md"
+                  />
+                  <label for="buy">or more</label>
+                </div>
+
+                <div class="w-[45%]">
+                  <label for="get">Get</label>
+                  <input
+                    type="number"
+                    value="30"
+                    name="get"
+                    class="w-[80%] bg-white px-3 py-2 border border-gray-200 rounded-md"
+                  />
+                  <label for="get">% off</label>
+                </div>
+
+                <div class="w-[10%] text-right">
+                  <button
+                    class="remove-tier-btn text-gray-500 hover:text-red-600 cursor-pointer"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path d="M3 6h18"></path>
+                      <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path>
+                      <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"></path>
+                      <path d="M10 11v6"></path>
+                      <path d="M14 11v6"></path>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Fifth Row -->
+          <div
+            class="preview-wrapper bg-[#f9fafb] w-full px-4 py-3 rounded-lg mt-4"
+          >
+            <h4 class="text-gray-800 text-lg">
+              Preview: Buy More, Save More Table
+            </h4>
+            <div class="overflow-x-auto flex justify-center mt-2">
+              <table
+                class="min-w-[100%] border border-gray-200 shadow-md rounded-lg overflow-hidden divide-y divide-gray-200"
+              >
+                <thead class="text-gray-700">
+                  <tr>
+                    <th class="px-6 py-2 text-left text-sm font-bold">
+                      Quantity
+                    </th>
+                    <th class="px-6 py-2 text-left text-sm font-bold">
+                      Discount
+                    </th>
+                    <th class="px-6 py-2 text-left text-sm font-bold">
+                      You Save
+                    </th>
+                  </tr>
+                </thead>
+
+                <tbody class="text-sm divide-y divide-gray-200">
+                  <tr class="hover:bg-gray-50">
+                    <td class="px-6 py-2">2+</td>
+                    <td class="px-6 py-2">10%</td>
+                    <td class="px-6 py-2">$4.00</td>
+                  </tr>
+
+                  <tr class="hover:bg-gray-50">
+                    <td class="px-6 py-2">5+</td>
+                    <td class="px-6 py-2">20%</td>
+                    <td class="px-6 py-2">$19.99</td>
+                  </tr>
+
+                  <tr class="hover:bg-gray-50">
+                    <td class="px-6 py-2">10+</td>
+                    <td class="px-6 py-2">30%</td>
+                    <td class="px-6 py-2">$59.97</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </form>
+
+        <div class="flex items-center justify-end gap-3 mt-6 pb-3 text-[15px]">
+          <button
+            class="border border-gray-200 hover:bg-gray-100 px-4 py-2 rounded-md cursor-pointer"
+          >
+            Cancel
+          </button>
+          <button
+            class="border border-gray-200 bg-black text-white px-4 py-2 rounded-md cursor-pointer"
+            type="submit"
+          >
+            Save Discount
+          </button>
+        </div>
+      </main>
+
+      <!-- Active Bulk Discounts -->
+      <main
+        id="manage-discount"
+        class="bulk-section bg-white border border-gray-200 rounded-lg px-6 py-4 mt-6"
+      >
+        <h3 class="text-2xl font-bold text-gray-800">Active Bulk Discounts</h3>
+        <div class="overflow-x-auto flex justify-center mt-5">
+          <table
+            class="min-w-[100%] bg-white border border-gray-200 shadow-md rounded-lg overflow-hidden divide-y divide-gray-200"
+          >
+            <thead class="bg-gray-100 text-gray-700">
+              <tr>
+                <th class="px-6 py-3 text-left text-sm font-semibold">Name</th>
+                <th class="px-6 py-3 text-left text-sm font-semibold">Type</th>
+                <th class="px-6 py-3 text-left text-sm font-semibold">Tiers</th>
+                <th class="px-6 py-3 text-left text-sm font-semibold">
+                  Status
+                </th>
+                <th class="px-6 py-3 text-left text-sm font-semibold">
+                  Products
+                </th>
+                <th class="px-6 py-3 text-left text-sm font-semibold">
+                  Actions
+                </th>
+              </tr>
+            </thead>
+
+            <tbody class="text-sm divide-y divide-gray-200">
+              <tr class="hover:bg-gray-50">
+                <td class="px-6 py-3">Summer T-Shirt Sale</td>
+                <td class="px-6 py-3">Percentage</td>
+                <td class="px-6 py-3 text-xs">
+                  <div>2+ : 10% off</div>
+                  <div>5+ : 20% off</div>
+                </td>
+                <td class="px-6 py-3">
+                  <div
+                    class="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-green-100 text-green-800 hover:bg-green-100"
+                  >
+                    Active
+                  </div>
+                </td>
+                <td class="px-6 py-3">T-Shirt Collection</td>
+                <td class="px-6 py-3">
+                  <div class="flex space-x-2">
+                    <button class="text-gray-500 hover:text-blue-600 cursor-pointer">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
+                        <path
+                          d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"
+                        ></path>
+                        <path d="m15 5 4 4"></path>
+                      </svg></button
+                    ><button class="text-gray-500 hover:text-red-600 cursor-pointer">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
+                        <path d="M3 6h18"></path>
+                        <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path>
+                        <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"></path>
+                        <path d="M10 11v6"></path>
+                        <path d="M14 11v6"></path>
+                      </svg>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+
+              <tr class="hover:bg-gray-50">
+                <td class="px-6 py-3">Accessories Bundle</td>
+                <td class="px-6 py-3">Fixed Amount</td>
+                <td class="px-6 py-3 text-xs">
+                  <div>3+ : 5$ off</div>
+                  <div>6+ : 10$ off</div>
+                </td>
+                <td class="px-6 py-3">
+                  <div
+                    class="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-green-100 text-green-800 hover:bg-green-100"
+                  >
+                    Active
+                  </div>
+                </td>
+                <td class="px-6 py-3">Accessories Collection</td>
+                <td class="px-6 py-3">
+                  <div class="flex space-x-2">
+                    <button class="text-gray-500 hover:text-blue-600 cursor-pointer">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
+                        <path
+                          d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"
+                        ></path>
+                        <path d="m15 5 4 4"></path>
+                      </svg></button
+                    ><button class="text-gray-500 hover:text-red-600 cursor-pointer">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
+                        <path d="M3 6h18"></path>
+                        <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path>
+                        <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"></path>
+                        <path d="M10 11v6"></path>
+                        <path d="M14 11v6"></path>
+                      </svg>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </main>
+    </section>
+    <!-- Bulk Section Ends Here -->
+
+    <!-- BOGO Section Starts Here -->
+    <section id="bogo" class="px-14 pt-5 pb-30 bg-[#f9fafb]">
+      <div class="flex justify-between items-center">
+        <h2 class="text-2xl font-bold text-gray-800">
+          BOGO (Buy One Get One) Deals
+        </h2>
+
+        <button
+          id="create-new-button"
+          class="flex items-center justify-between cursor-pointer bg-black hover:bg-gray-700 px-3.5 py-2 rounded-md text-white"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="mr-2"
+          >
+            <path d="M5 12h14"></path>
+            <path d="M12 5v14"></path>
+          </svg>
+          <span class="tracking-tight text-[15px]">Create New</span>
+        </button>
+      </div>
+
+      <nav
+        class="bg-[#f5f5f5] w-full flex justify-between items-center mt-6 box-content p-1 text-sm rounded-md text-gray-600"
+      >
+        <button
+          type="button"
+          class="bogo-btn cursor-pointer box-border w-6/12 h-8 rounded bg-white text-black"
+          data-target="create-bogo-deal"
+        >
+          Create BOGO Deal</button
+        ><button
+          type="button"
+          class="bogo-btn cursor-pointer box-border w-6/12 h-8 rounded bg-transparent text-gray-600"
+          data-target="manage-bogo-deals"
+        >
+          Manage BOGO Deal
+        </button>
+      </nav>
+
+      <!-- Create BOGO Deal -->
+      <main
+        id="create-bogo-deal"
+        class="bogo-section bg-white border border-gray-200 rounded-lg px-6 py-4 mt-6"
+      >
+        <h3 class="text-2xl font-bold text-gray-800">Create BOGO Deal</h3>
+
+        <form action="" method="" class="mt-6 text-sm">
+          <!-- First Row -->
+          <div class="flex justify-between items-center gap-6 w-full mt-4">
+            <div class="w-full">
+              <label for="deal-name" class="block">Deal Name</label>
+              <input
+                type="text"
+                name="deal-name"
+                id=""
+                placeholder="Buy 1 Get 1 Free T-Shirts"
+                class="w-full border border-gray-200 focus:outline-none focus:ring-2 focus:ring-purple-600 px-3 py-1.5 rounded-md"
+              />
+            </div>
+            <div class="w-full">
+              <label for="discount-name" class="block"
+                >Buy Products/Collections</label
+              >
+              <!-- <input type="text" name="discount-name" id="" placeholder="Summer Sale 20% Off" class="border border-gray-200 focus:outline-none focus:ring-2 focus:ring-purple-600 px-3 py-1.5 rounded-md" /> -->
+              <select
+                name="discount-name"
+                id=""
+                class="w-full border border-gray-200 focus:outline-none focus:ring-2 focus:ring-purple-600 px-3 py-1.5 rounded-md"
+              >
+                <option value="1" selected="">All Products</option>
+                <option value="2">Specific Products</option>
+                <option value="3">Specific Collections</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Second Row -->
+          <div class="flex justify-between items-center gap-6 w-full mt-4">
+            <div class="w-full">
+              <p>BOGO Type</p>
+              <div class="flex items-center gap-2 mt-2">
+                <input
+                  type="radio"
+                  role="radio"
+                  id="free-item"
+                  name="discount-type"
+                  checked
+                /><label for="free-item">Free Item (Buy X Get Y Free)</label>
+              </div>
+              <div class="flex items-center gap-2">
+                <input
+                  type="radio"
+                  role="radio"
+                  id="percentage-off"
+                  name="discount-type"
+                /><label for="percentage-off"
+                  >Percentage Off (Buy X Get Y at Z% Off)</label
+                >
+              </div>
+              <div class="flex items-center gap-2">
+                <input
+                  type="radio"
+                  role="radio"
+                  id="fixed-off"
+                  name="discount-type"
+                /><label for="fixed-off"
+                  >Fixed Amount Off (Buy X Get Y at $Z Off)</label
+                >
+              </div>
+            </div>
+
+            <div class="w-full">
+              <label for="discount-type" class="block"
+                >Get Products/Collections</label
+              >
+              <select
+                name="discount-type"
+                id=""
+                class="w-full border border-gray-200 focus:outline-none focus:ring-2 focus:ring-purple-600 px-3 py-1.5 rounded-md"
+              >
+                <option value="1" selected="">Same as Buy Products</option>
+                <option value="2">Specific Products</option>
+                <option value="3">Specific Collections</option>
+              </select>
+            </div>
+
+            <!-- <div class="w-full">
+              <label for="discount-name" class="block">Start Date</label>
+              <input
+                type="date"
+                name="discount-name"
+                id=""
+                placeholder="Summer Sale 20% Off"
+                class="w-full border border-gray-200 focus:outline-none focus:ring-2 focus:ring-purple-600 px-3 py-1.5 rounded-md"
+              />
+            </div> -->
+          </div>
+
+          <!-- Third Row -->
+          <div class="flex justify-between items-center gap-6 w-full mt-4">
+            <div class="w-full flex items-center justify-between gap-4">
+              <div class="w-full">
+                <label for="buy-quantity" class="block">Buy Quantity</label>
+                <input
+                  type="number"
+                  name="buy-quantity"
+                  id=""
+                  value="1"
+                  class="w-full border border-gray-200 focus:outline-none focus:ring-2 focus:ring-purple-600 px-3 py-1.5 rounded-md"
+                />
+              </div>
+
+              <div class="w-full">
+                <label for="get-quantity" class="block">Get Quantity</label>
+                <input
+                  type="number"
+                  name="get-quantity"
+                  id=""
+                  value="1"
+                  class="w-full border border-gray-200 focus:outline-none focus:ring-2 focus:ring-purple-600 px-3 py-1.5 rounded-md"
+                />
+              </div>
+            </div>
+
+            <div class="w-full">
+              <label for="discount-name" class="block">Start Date</label>
+              <input
+                type="date"
+                name="discount-name"
+                id=""
+                placeholder="Summer Sale 20% Off"
+                class="w-full border border-gray-200 focus:outline-none focus:ring-2 focus:ring-purple-600 px-3 py-1.5 rounded-md"
+              />
+            </div>
+          </div>
+
+          <!-- Fourth Row -->
+          <div class="flex justify-between items-center gap-6 w-full mt-4">
+            <div class="w-full">
+              <label for="discount-name" class="block">Discount Amount</label>
+              <div class="flex">
+                <input
+                  type="number"
+                  name="discount-name"
+                  id=""
+                  value="100"
+                  class="w-full border border-gray-200 focus:outline-none focus:ring-2 focus:ring-purple-600 px-3 py-1.5 rounded-md"
+                />
+                <div
+                  class="border border-gray-200 bg-gray-400 rounded-md px-3 py-1.5"
+                  style="background-color: gainsboro; margin-left: -1px"
+                >
+                  %
+                </div>
+              </div>
+            </div>
+
+            <div class="w-full">
+              <label for="discount-name" class="block"
+                >End Date (Optional)</label
+              >
+              <input
+                type="date"
+                name="discount-name"
+                id=""
+                placeholder="Summer Sale 20% Off"
+                class="w-full border border-gray-200 focus:outline-none focus:ring-2 focus:ring-purple-600 px-3 py-1.5 rounded-md"
+              />
+            </div>
+          </div>
+
+          <!-- Fifth Row -->
+          <div class="w-full space-y-3 mt-6">
+            <div class="flex items-center space-x-2">
+              <label class="relative inline-flex items-center cursor-pointer">
+                <input
+                  type="checkbox"
+                  checked
+                  value=""
+                  class="sr-only peer"
+                  id="auto-apply-toggle"
+                />
+                <div
+                  class="w-11 h-6 bg-gray-300 peer-focus:outline-none rounded-full peer peer-checked:bg-black transition duration-200"
+                ></div>
+                <div
+                  class="absolute left-0.5 top-0.5 w-5 h-5 bg-white rounded-full transition-transform duration-200 transform peer-checked:translate-x-full"
+                ></div>
+              </label>
+              <label for="auto-apply-toggle" class="text-gray-800">
+                Auto-apply discount (no code required)
+              </label>
+            </div>
+
+            <div class="flex items-center space-x-2">
+              <label class="relative inline-flex items-center cursor-pointer">
+                <input
+                  type="checkbox"
+                  value=""
+                  checked
+                  class="sr-only peer"
+                  id="auto-apply-toggle"
+                />
+                <div
+                  class="w-11 h-6 bg-gray-300 peer-focus:outline-none rounded-full peer peer-checked:bg-black transition duration-200"
+                ></div>
+                <div
+                  class="absolute left-0.5 top-0.5 w-5 h-5 bg-white rounded-full transition-transform duration-200 transform peer-checked:translate-x-full"
+                ></div>
+              </label>
+              <label for="auto-apply-toggle" class="text-gray-800">
+                Show BOGO badge on product pages
+              </label>
+            </div>
+          </div>
+
+          <!-- Sixth Row -->
+          <div
+            class="preview-wrapper bg-[#f9fafb] w-full px-4 py-3 rounded-lg mt-6"
+          >
+            <h4 class="text-gray-800 text-lg">Preview</h4>
+            <div class="mt-2 p-4 border border-gray-200 rounded-md bg-white">
+              <div>
+                <span
+                  class="rounded-full px-2.5 py-0.5 text-xs font-semibold text-purple-800"
+                  style="background-color: #f3e8ff; color: #6b21a8"
+                >
+                  BOGO DEAL
+                </span>
+              </div>
+              <p class="text-lg font-medium mt-2">Buy 1 Get 1 Free</p>
+              <p class="text-sm text-gray-500 mt-1">
+                Add 2 items to your cart, and the lowest priced item will be
+                free!
+              </p>
+            </div>
+          </div>
+        </form>
+
+        <div class="flex items-center justify-end gap-3 mt-6 pb-3 text-[15px]">
+          <button
+            class="border border-gray-200 hover:bg-gray-100 px-4 py-2 rounded-md cursor-pointer"
+          >
+            Cancel
+          </button>
+          <button
+            class="border border-gray-200 bg-black text-white px-4 py-2 rounded-md cursor-pointer"
+            type="submit"
+          >
+            Save BOGO Deal
+          </button>
+        </div>
+      </main>
+
+      <!-- Active BOGO Deals -->
+      <main
+        id="manage-bogo-deals"
+        class="bogo-section bg-white border border-gray-200 rounded-lg px-6 py-4 mt-6"
+      >
+        <h3 class="text-2xl font-bold text-gray-800">Active BOGO Deals</h3>
+        <div class="overflow-x-auto flex justify-center mt-5">
+          <table
+            class="min-w-[100%] bg-white border border-gray-200 shadow-md rounded-lg overflow-hidden divide-y divide-gray-200"
+          >
+            <thead class="bg-gray-100 text-gray-700">
+              <tr>
+                <th class="px-6 py-3 text-left text-sm font-semibold">Name</th>
+                <th class="px-6 py-3 text-left text-sm font-semibold">Type</th>
+                <th class="px-6 py-3 text-left text-sm font-semibold">Deal</th>
+                <th class="px-6 py-3 text-left text-sm font-semibold">
+                  Status
+                </th>
+                <th class="px-6 py-3 text-left text-sm font-semibold">
+                  Products
+                </th>
+                <th class="px-6 py-3 text-left text-sm font-semibold">
+                  Actions
+                </th>
+              </tr>
+            </thead>
+
+            <tbody class="text-sm divide-y divide-gray-200">
+              <tr class="hover:bg-gray-50">
+                <td class="px-6 py-3">Buy 1 Get 1 Free T-shirts</td>
+                <td class="px-6 py-3">Free Item</td>
+                <td class="px-6 py-3">Buy 1, Get 1 at 100% off</td>
+                <td class="px-6 py-3">
+                  <div
+                    class="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-green-100 text-green-800 hover:bg-green-100"
+                  >
+                    Active
+                  </div>
+                </td>
+                <td class="px-6 py-3">T-Shirt Collection</td>
+                <td class="px-6 py-3">
+                  <div class="flex space-x-2">
+                    <button class="text-gray-500 hover:text-blue-600 cursor-pointer">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
+                        <path
+                          d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"
+                        ></path>
+                        <path d="m15 5 4 4"></path>
+                      </svg></button
+                    ><button class="text-gray-500 hover:text-red-600 cursor-pointer">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
+                        <path d="M3 6h18"></path>
+                        <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path>
+                        <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"></path>
+                        <path d="M10 11v6"></path>
+                        <path d="M14 11v6"></path>
+                      </svg>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+
+              <tr class="hover:bg-gray-50">
+                <td class="px-6 py-3">Buy 2 Get 1 at 50% Off</td>
+                <td class="px-6 py-3">Percentage Off</td>
+                <td class="px-6 py-3">Buy 2, Get 1 at 50% off</td>
+                <td class="px-6 py-3">
+                  <div
+                    class="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-green-100 text-green-800 hover:bg-green-100"
+                  >
+                    Active
+                  </div>
+                </td>
+                <td class="px-6 py-3">Accessories Collection</td>
+                <td class="px-6 py-3">
+                  <div class="flex space-x-2">
+                    <button class="text-gray-500 hover:text-blue-600 cursor-pointer">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
+                        <path
+                          d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"
+                        ></path>
+                        <path d="m15 5 4 4"></path>
+                      </svg></button
+                    ><button class="text-gray-500 hover:text-red-600 cursor-pointer">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
+                        <path d="M3 6h18"></path>
+                        <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path>
+                        <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"></path>
+                        <path d="M10 11v6"></path>
+                        <path d="M14 11v6"></path>
+                      </svg>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </main>
+    </section>
+    <!-- BOGO Section Ends Here -->
+
+    <!-- Cart Section Starts Here -->
+    <section id="cart" class="px-14 pt-5 pb-28 bg-[#f9fafb]">
+      <div class="flex justify-between items-center">
+        <h2 class="text-2xl font-bold text-gray-800">Cart Value Discounts</h2>
+
+        <button
+          id="create-new-button"
+          class="flex items-center justify-between cursor-pointer bg-black hover:bg-gray-700 px-3.5 py-2 rounded-md text-white"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="mr-2"
+          >
+            <path d="M5 12h14"></path>
+            <path d="M12 5v14"></path>
+          </svg>
+          <span class="tracking-tight text-[15px]">Create New</span>
+        </button>
+      </div>
+
+      <nav
+        class="bg-[#f5f5f5] w-full flex justify-between items-center mt-6 box-content p-1 text-sm rounded-md text-gray-600"
+      >
+        <button
+          type="button"
+          class="cart-discount-btn cursor-pointer box-border w-6/12 h-8 rounded bg-white text-black"
+          data-target="create-cart-discount"
+        >
+          Create Discount</button
+        ><button
+          type="button"
+          class="cart-discount-btn cursor-pointer box-border w-6/12 h-8 rounded bg-transparent text-gray-600"
+          data-target="manage-cart-discount"
+        >
+          Manage Discount
+        </button>
+      </nav>
+
+      <!-- Create Cart Value Discount -->
+      <main
+        id="create-cart-discount"
+        class="cart-section bg-white border border-gray-200 rounded-lg px-6 py-4 mt-6"
+      >
+        <h3 class="text-2xl font-bold text-gray-800">
+          Create Cart Value Discount
+        </h3>
+
+        <form action="" method="" class="mt-6 text-sm">
+          <!-- First Row -->
+          <div class="flex justify-between items-center gap-6 w-full mt-4">
+            <div class="w-full">
+              <label for="cart-discount-name" class="block"
+                >Discount Name</label
+              >
+              <input
+                type="text"
+                name=""
+                id="cart-discount-name"
+                placeholder="Spend $100, Get $10 Off"
+                class="w-full border border-gray-200 focus:outline-none focus:ring-2 focus:ring-purple-600 px-3 py-1.5 rounded-md"
+              />
+            </div>
+            <div class="w-full">
+              <label for="customer-eligibility" class="block"
+                >Customer Eligibility</label
+              >
+              <!-- <input type="text" name="discount-name" id="" placeholder="Summer Sale 20% Off" class="border border-gray-200 focus:outline-none focus:ring-2 focus:ring-purple-600 px-3 py-1.5 rounded-md" /> -->
+              <select
+                name=""
+                id="customer-eligibility"
+                class="w-full border border-gray-200 focus:outline-none focus:ring-2 focus:ring-purple-600 px-3 py-1.5 rounded-md"
+              >
+                <option value="1" selected="">All Customers</option>
+                <option value="2">First-time Customers</option>
+                <option value="3">Returning Customers</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Second Row -->
+          <div class="flex justify-between items-center gap-6 w-full mt-4">
+            <div class="w-full">
+              <p>Discount Type</p>
+              <div class="flex items-center gap-2 mt-2">
+                <input
+                  type="radio"
+                  role="radio"
+                  id="fixed-amount"
+                  name="discount-type"
+                  checked
+                /><label for="fixed-amount">Fixed Amount (e.g., $10 off)</label>
+              </div>
+              <div class="flex items-center gap-2">
+                <input
+                  type="radio"
+                  role="radio"
+                  id="percentage"
+                  name="discount-type"
+                /><label for="percentage">Percentage (e.g., 10% off)</label>
+              </div>
+              <div class="flex items-center gap-2">
+                <input
+                  type="radio"
+                  role="radio"
+                  id="free-shipping"
+                  name="discount-type"
+                /><label for="free-shipping">Free Shipping</label>
+              </div>
+            </div>
+
+            <div class="w-full">
+              <label for="discount-name" class="block">Start Date</label>
+              <input
+                type="date"
+                name="discount-name"
+                id=""
+                placeholder="Summer Sale 20% Off"
+                class="w-full border border-gray-200 focus:outline-none focus:ring-2 focus:ring-purple-600 px-3 py-1.5 rounded-md"
+              />
+            </div>
+          </div>
+
+          <!-- Third Row -->
+          <div
+            class="flex justify-between items-center gap-6 w-full mt-4 mb-10"
+          >
+            <div class="w-full space-y-3">
+              <div class="flex items-center space-x-2">
+                <label class="relative inline-flex items-center cursor-pointer">
+                  <input
+                    type="checkbox"
+                    checked
+                    value=""
+                    class="sr-only peer"
+                    id="auto-apply-toggle"
+                  />
+                  <div
+                    class="w-11 h-6 bg-gray-300 peer-focus:outline-none rounded-full peer peer-checked:bg-black transition duration-200"
+                  ></div>
+                  <div
+                    class="absolute left-0.5 top-0.5 w-5 h-5 bg-white rounded-full transition-transform duration-200 transform peer-checked:translate-x-full"
+                  ></div>
+                </label>
+                <label for="auto-apply-toggle" class="text-gray-800">
+                  Auto-apply discount (no code required)
+                </label>
+              </div>
+
+              <div class="flex items-center space-x-2">
+                <label class="relative inline-flex items-center cursor-pointer">
+                  <input
+                    type="checkbox"
+                    value=""
+                    checked
+                    class="sr-only peer"
+                    id="auto-apply-toggle"
+                  />
+                  <div
+                    class="w-11 h-6 bg-gray-300 peer-focus:outline-none rounded-full peer peer-checked:bg-black transition duration-200"
+                  ></div>
+                  <div
+                    class="absolute left-0.5 top-0.5 w-5 h-5 bg-white rounded-full transition-transform duration-200 transform peer-checked:translate-x-full"
+                  ></div>
+                </label>
+                <label for="auto-apply-toggle" class="text-gray-800">
+                  Show progress bar in cart
+                </label>
+              </div>
+            </div>
+
+            <div class="w-full">
+              <label for="discount-name" class="block"
+                >End Date (Optional)</label
+              >
+              <input
+                type="date"
+                name="discount-name"
+                id=""
+                placeholder="Summer Sale 20% Off"
+                class="w-full border border-gray-200 focus:outline-none focus:ring-2 focus:ring-purple-600 px-3 py-1.5 rounded-md"
+              />
+            </div>
+          </div>
+
+          <!-- Fourth Row -->
+          <div>
+            <div class="flex justify-between items-center my-5">
+              <span>Discount Tiers (Spend More, Save More)</span>
+              <button
+                id="add-cart-tier-btn"
+                class="border border-gray-200 px-3 py-2 rounded-md cursor-pointer"
+              >
+                Add Tier
+              </button>
+            </div>
+
+            <div
+              id="cart-tiers-container"
+              class="bg-[#f9fafb] w-full px-4 py-4 rounded-lg space-y-4"
+            >
+              <div class="flex justify-between items-center">
+                <p class="w-[50%]">Cart Value</p>
+                <p class="w-[45%]">Discount</p>
+                <p class="w-[8%] invisible">Actions</p>
+              </div>
+
+              <div class="flex justify-between items-center">
+                <div class="w-[50%]">
+                  <label for="spend">Spend $</label>
+                  <input
+                    type="number"
+                    value="50"
+                    name="spend"
+                    class="w-[80%] bg-white px-3 py-2 border border-gray-200 rounded-md"
+                  />
+                  <label for="spend">or more</label>
+                </div>
+
+                <div class="w-[45%]">
+                  <label for="get">Get $</label>
+                  <input
+                    type="number"
+                    value="5"
+                    name="get"
+                    class="w-[80%] bg-white px-3 py-2 border border-gray-200 rounded-md"
+                  />
+                  <label for="get">off</label>
+                </div>
+
+                <div class="w-[8%] text-right">
+                  <button
+                    class="remove-tier-btn text-gray-500 hover:text-red-600 cursor-pointer"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path d="M3 6h18"></path>
+                      <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path>
+                      <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"></path>
+                      <path d="M10 11v6"></path>
+                      <path d="M14 11v6"></path>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+
+              <div class="flex justify-between items-center">
+                <div class="w-[50%]">
+                  <label for="spend">Spend $</label>
+                  <input
+                    type="number"
+                    value="100"
+                    name="spend"
+                    class="w-[80%] bg-white px-3 py-2 border border-gray-200 rounded-md"
+                  />
+                  <label for="spend">or more</label>
+                </div>
+
+                <div class="w-[45%]">
+                  <label for="get">Get $</label>
+                  <input
+                    type="number"
+                    value="10"
+                    name="get"
+                    class="w-[80%] bg-white px-3 py-2 border border-gray-200 rounded-md"
+                  />
+                  <label for="get">off</label>
+                </div>
+
+                <div class="w-[8%] text-right">
+                  <button
+                    class="remove-tier-btn text-gray-500 hover:text-red-600 cursor-pointer"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path d="M3 6h18"></path>
+                      <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path>
+                      <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"></path>
+                      <path d="M10 11v6"></path>
+                      <path d="M14 11v6"></path>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+
+              <div class="flex justify-between items-center">
+                <div class="w-[50%]">
+                  <label for="spend">Spend $</label>
+                  <input
+                    type="number"
+                    value="150"
+                    name="spend"
+                    class="w-[80%] bg-white px-3 py-2 border border-gray-200 rounded-md"
+                  />
+                  <label for="spend">or more</label>
+                </div>
+
+                <div class="w-[45%]">
+                  <label for="get">Get $</label>
+                  <input
+                    type="number"
+                    value="15"
+                    name="get"
+                    class="w-[80%] bg-white px-3 py-2 border border-gray-200 rounded-md"
+                  />
+                  <label for="get">off</label>
+                </div>
+
+                <div class="w-[8%] text-right">
+                  <button
+                    class="remove-tier-btn text-gray-500 hover:text-red-600 cursor-pointer"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path d="M3 6h18"></path>
+                      <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path>
+                      <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"></path>
+                      <path d="M10 11v6"></path>
+                      <path d="M14 11v6"></path>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Fifth Row -->
+          <div
+            class="preview-wrapper bg-[#f9fafb] w-full px-4 py-3 rounded-lg mt-6"
+          >
+            <h4 class="text-gray-800 text-lg">Preview</h4>
+            <div class="mt-2 p-4 border border-gray-200 rounded-md bg-white">
+              <p class="text-sm text-gray-900 mt-1">
+                You're $25 away from free shipping!
+              </p>
+
+              <!-- Progress Bar -->
+              <div
+                class="w-full rounded-full mt-2 relative"
+                style="background-color: #ebebeb"
+              >
+                <!-- Progress Fill (e.g., 75%) -->
+                <div
+                  class="bg-purple-600 rounded-full"
+                  style="width: 75%; height: 10px"
+                ></div>
+              </div>
+
+              <!-- Range Labels -->
+              <div class="flex justify-between text-xs text-gray-500 mt-1 px-1">
+                <span>$0</span>
+                <span>$75</span>
+                <span>$100</span>
+              </div>
+            </div>
+          </div>
+        </form>
+
+        <div class="flex items-center justify-end gap-3 mt-6 pb-3 text-[15px]">
+          <button
+            class="border border-gray-200 hover:bg-gray-100 px-4 py-2 rounded-md cursor-pointer"
+          >
+            Cancel
+          </button>
+          <button
+            class="border border-gray-200 bg-black text-white px-4 py-2 rounded-md cursor-pointer"
+            type="submit"
+          >
+            Save Discount
+          </button>
+        </div>
+      </main>
+
+      <!-- Active Cart Value Discounts -->
+      <main
+        id="manage-cart-discount"
+        class="cart-section bg-white border border-gray-200 rounded-lg px-6 py-4 mt-6"
+      >
+        <h3 class="text-2xl font-bold text-gray-800">
+          Active Cart Value Discounts
+        </h3>
+        <div class="overflow-x-auto flex justify-center mt-5">
+          <table
+            class="min-w-[100%] bg-white border border-gray-200 shadow-md rounded-lg overflow-hidden divide-y divide-gray-200"
+          >
+            <thead class="bg-gray-100 text-gray-700">
+              <tr>
+                <th class="px-6 py-3 text-left text-sm font-semibold">Name</th>
+                <th class="px-6 py-3 text-left text-sm font-semibold">Type</th>
+                <th class="px-6 py-3 text-left text-sm font-semibold">Tiers</th>
+                <th class="px-6 py-3 text-left text-sm font-semibold">
+                  Status
+                </th>
+                <th class="px-6 py-3 text-left text-sm font-semibold">
+                  Actions
+                </th>
+              </tr>
+            </thead>
+
+            <tbody class="text-sm divide-y divide-gray-200">
+              <tr class="hover:bg-gray-50">
+                <td class="px-6 py-3">Summer Sale Discount</td>
+                <td class="px-6 py-3">Fixed Amount</td>
+                <td class="px-6 py-3">
+                  <div class="text-xs">$50+ : $5 off</div>
+                  <div class="text-xs">$100+ : $15 off</div>
+                </td>
+                <td class="px-6 py-3">
+                  <div
+                    class="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-green-100 text-green-800 hover:bg-green-100"
+                  >
+                    Active
+                  </div>
+                </td>
+                <td class="px-6 py-3">
+                  <div class="flex space-x-2">
+                    <button class="text-gray-500 hover:text-blue-600 cursor-pointer">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
+                        <path
+                          d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"
+                        ></path>
+                        <path d="m15 5 4 4"></path>
+                      </svg></button
+                    ><button class="text-gray-500 hover:text-red-600 cursor-pointer">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
+                        <path d="M3 6h18"></path>
+                        <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path>
+                        <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"></path>
+                        <path d="M10 11v6"></path>
+                        <path d="M14 11v6"></path>
+                      </svg>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+
+              <tr class="hover:bg-gray-50">
+                <td class="px-6 py-3">Holiday Special</td>
+                <td class="px-6 py-3">Percentage</td>
+                <td class="px-6 py-3">
+                  <div class="text-xs">$75+ : $10 off</div>
+                  <div class="text-xs">$150+ : $20 off</div>
+                </td>
+                <td class="px-6 py-3">
+                  <div
+                    class="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-blue-100 text-blue-800 hover:bg-blue-100"
+                  >
+                    Scheduled
+                  </div>
+                </td>
+                <td class="px-6 py-3">
+                  <div class="flex space-x-2">
+                    <button class="text-gray-500 hover:text-blue-600 cursor-pointer">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
+                        <path
+                          d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"
+                        ></path>
+                        <path d="m15 5 4 4"></path>
+                      </svg></button
+                    ><button class="text-gray-500 hover:text-red-600 cursor-pointer">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
+                        <path d="M3 6h18"></path>
+                        <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path>
+                        <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"></path>
+                        <path d="M10 11v6"></path>
+                        <path d="M14 11v6"></path>
+                      </svg>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </main>
+    </section>
+    <!-- Cart Section Ends Here -->
+
+    <!-- Flash Sale Section Starts Here -->
+    <section id="flash-sale" class="px-14 pt-5 pb-30 bg-[#f9fafb]">
+      <div class="flex justify-between items-center">
+        <h2 class="text-2xl font-bold text-gray-800">
+          Flash Sale & Countdown Timer
+        </h2>
+
+        <button
+          id="create-new-button"
+          class="flex items-center justify-between cursor-pointer bg-black hover:bg-gray-700 px-3.5 py-2 rounded-md text-white"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="mr-2"
+          >
+            <path d="M5 12h14"></path>
+            <path d="M12 5v14"></path>
+          </svg>
+          <span class="tracking-tight text-[15px]">Create New</span>
+        </button>
+      </div>
+
+      <nav
+        class="bg-[#f5f5f5] w-full flex justify-between items-center mt-6 box-content p-1 text-sm rounded-md text-gray-600"
+      >
+        <button
+          type="button"
+          class="flash-sale-btn cursor-pointer box-border w-6/12 h-8 rounded bg-white text-black"
+          data-target="create-flash-sale"
+        >
+          Create Flash Sale</button
+        ><button
+          type="button"
+          class="flash-sale-btn cursor-pointer box-border w-6/12 h-8 rounded bg-transparent text-gray-600"
+          data-target="manage-flash-sale"
+        >
+          Manage Flash Sales
+        </button>
+      </nav>
+
+      <!-- Create Flash Sale -->
+      <main
+        id="create-flash-sale"
+        class="flash-sale-section bg-white border border-gray-200 rounded-lg px-6 py-4 mt-6"
+      >
+        <h3 class="text-2xl font-bold text-gray-800">Create Flash Sale</h3>
+
+        <form action="" method="" class="mt-6 text-sm">
+          <!-- First Row -->
+          <div class="flex justify-between items-center gap-6 w-full mt-4">
+            <div class="w-full">
+              <label for="flash-sale-name" class="block">Flash Sale Name</label>
+              <input
+                type="text"
+                name=""
+                id="flash-sale-name"
+                placeholder="24-Hour Flash Sale"
+                class="w-full border border-gray-200 focus:outline-none focus:ring-2 focus:ring-purple-600 px-3 py-1.5 rounded-md"
+              />
+            </div>
+
+            <div class="w-full">
+              <label for="discount-name" class="block">Start Date & Time</label>
+              <input
+                type="datetime-local"
+                name="discount-name"
+                id=""
+                class="w-full border border-gray-200 focus:outline-none focus:ring-2 focus:ring-purple-600 px-3 py-1.5 rounded-md"
+              />
+            </div>
+          </div>
+
+          <!-- Second Row -->
+          <div class="flex justify-between items-center gap-6 w-full mt-4">
+            <div class="w-full">
+              <p>Discount Type</p>
+              <div class="flex items-center gap-2 mt-2">
+                <input
+                  type="radio"
+                  role="radio"
+                  id="fixed-amount"
+                  name="discount-type"
+                  checked
+                /><label for="fixed-amount">Percentage (e.g., 25% off)</label>
+              </div>
+              <div class="flex items-center gap-2">
+                <input
+                  type="radio"
+                  role="radio"
+                  id="percentage"
+                  name="discount-type"
+                /><label for="percentage">Fixed Amount (e.g., $15 off)</label>
+              </div>
+            </div>
+
+            <div class="w-full">
+              <label for="discount-name" class="block">End Date & Time</label>
+              <input
+                type="datetime-local"
+                name="discount-name"
+                id=""
+                class="w-full border border-gray-200 focus:outline-none focus:ring-2 focus:ring-purple-600 px-3 py-1.5 rounded-md"
+              />
+            </div>
+          </div>
+
+          <!-- Third Row -->
+          <div class="flex justify-between items-center gap-6 w-full mt-4">
+            <div class="w-full">
+              <label for="discount-name" class="block">Discount Amount</label>
+              <div class="flex">
+                <input
+                  type="number"
+                  name="discount-name"
+                  id=""
+                  value="25"
+                  class="w-full border border-gray-200 focus:outline-none focus:ring-2 focus:ring-purple-600 px-3 py-1.5 rounded-md"
+                />
+                <div
+                  class="border border-gray-200 bg-gray-400 rounded-md px-3 py-1.5"
+                  style="background-color: gainsboro; margin-left: -1px"
+                >
+                  %
+                </div>
+              </div>
+            </div>
+
+            <div class="w-full">
+              <label for="customer-eligibility" class="block"
+                >Countdown Timer Position</label
+              >
+              <select
+                name=""
+                id="customer-eligibility"
+                class="w-full border border-gray-200 focus:outline-none focus:ring-2 focus:ring-purple-600 px-3 py-1.5 rounded-md"
+              >
+                <option value="1" selected="">Product Pages</option>
+                <option value="2">Cart Page</option>
+                <option value="3">Both</option>
+                <option value="4">Don't Show</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Fourth Row -->
+          <div class="flex justify-between items-center gap-6 w-full mt-4">
+            <div class="w-full">
+              <label for="customer-eligibility" class="block"
+                >Apply to Products/Collections</label
+              >
+              <select
+                name=""
+                id="customer-eligibility"
+                class="w-full border border-gray-200 focus:outline-none focus:ring-2 focus:ring-purple-600 px-3 py-1.5 rounded-md"
+              >
+                <option value="1" selected="">All Products</option>
+                <option value="2">Specific Products</option>
+                <option value="3">Specific Collections</option>
+              </select>
+            </div>
+
+            <div class="w-full">
+              <label for="urgency-message" class="block"
+                >Urgency Message (Optional)</label
+              >
+              <input
+                type="text"
+                name="urgency-message"
+                id=""
+                placeholder="Hurry! This sale ends soon!"
+                class="w-full border border-gray-200 focus:outline-none focus:ring-2 focus:ring-purple-600 px-3 py-1.5 rounded-md"
+              />
+            </div>
+          </div>
+
+          <!-- Fifth Row -->
+          <div class="flex justify-between items-center gap-6 w-full mt-6">
+            <div class="w-full space-y-3">
+              <div class="flex items-center space-x-2">
+                <label class="relative inline-flex items-center cursor-pointer">
+                  <input
+                    type="checkbox"
+                    checked
+                    value=""
+                    class="sr-only peer"
+                    id="auto-apply-toggle"
+                  />
+                  <div
+                    class="w-11 h-6 bg-gray-300 peer-focus:outline-none rounded-full peer peer-checked:bg-black transition duration-200"
+                  ></div>
+                  <div
+                    class="absolute left-0.5 top-0.5 w-5 h-5 bg-white rounded-full transition-transform duration-200 transform peer-checked:translate-x-full"
+                  ></div>
+                </label>
+                <label for="auto-apply-toggle" class="text-gray-800">
+                  Auto-apply discount (no code required)
+                </label>
+              </div>
+
+              <div class="flex items-center space-x-2">
+                <label class="relative inline-flex items-center cursor-pointer">
+                  <input
+                    type="checkbox"
+                    value=""
+                    checked
+                    class="sr-only peer"
+                    id="auto-apply-toggle"
+                  />
+                  <div
+                    class="w-11 h-6 bg-gray-300 peer-focus:outline-none rounded-full peer peer-checked:bg-black transition duration-200"
+                  ></div>
+                  <div
+                    class="absolute left-0.5 top-0.5 w-5 h-5 bg-white rounded-full transition-transform duration-200 transform peer-checked:translate-x-full"
+                  ></div>
+                </label>
+                <label for="auto-apply-toggle" class="text-gray-800">
+                  Show urgency popup on product pages
+                </label>
+              </div>
+
+              <div class="flex items-center space-x-2">
+                <label class="relative inline-flex items-center cursor-pointer">
+                  <input
+                    type="checkbox"
+                    value=""
+                    class="sr-only peer"
+                    id="auto-apply-toggle"
+                  />
+                  <div
+                    class="w-11 h-6 bg-gray-300 peer-focus:outline-none rounded-full peer peer-checked:bg-black transition duration-200"
+                  ></div>
+                  <div
+                    class="absolute left-0.5 top-0.5 w-5 h-5 bg-white rounded-full transition-transform duration-200 transform peer-checked:translate-x-full"
+                  ></div>
+                </label>
+                <label for="auto-apply-toggle" class="text-gray-800">
+                  Show limited stock counter
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sixth Row -->
+          <div
+            class="preview-wrapper bg-[#f9fafb] w-full px-4 py-3 rounded-lg mt-6"
+          >
+            <h4 class="text-gray-800 text-lg">Preview: Countdown Timer</h4>
+            <div
+              class="flex flex-col justify-center items-center mt-2 p-4 border border-gray-200 rounded-md bg-white"
+            >
+              <p style="color: #dc2626">Hurry! This sale ends soon!</p>
+              <div class="flex gap-3 mt-2">
+                <div class="flex flex-col items-center">
+                  <div
+                    style="
+                      background-color: #1f2937;
+                      color: white;
+                      box-sizing: border-box;
+                      width: 48px;
+                      height: 48px;
+                    "
+                    class="rounded-md flex items-center justify-center text-xl font-bold"
+                  >
+                    24
+                  </div>
+                  <span class="text-xs">Hours</span>
+                </div>
+
+                <div class="flex flex-col items-center">
+                  <div
+                    style="
+                      background-color: #1f2937;
+                      color: white;
+                      box-sizing: border-box;
+                      width: 48px;
+                      height: 48px;
+                    "
+                    class="rounded-md flex items-center justify-center text-xl font-bold"
+                  >
+                    00
+                  </div>
+                  <span class="text-xs">Minutes</span>
+                </div>
+
+                <div class="flex flex-col items-center">
+                  <div
+                    style="
+                      background-color: #1f2937;
+                      color: white;
+                      box-sizing: border-box;
+                      width: 48px;
+                      height: 48px;
+                    "
+                    class="rounded-md flex items-center justify-center text-xl font-bold"
+                  >
+                    00
+                  </div>
+                  <span class="text-xs">Seconds</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+
+        <div class="flex items-center justify-end gap-3 mt-6 pb-3 text-[15px]">
+          <button
+            class="border border-gray-200 hover:bg-gray-100 px-4 py-2 rounded-md cursor-pointer"
+          >
+            Cancel
+          </button>
+          <button
+            class="border border-gray-200 bg-black text-white px-4 py-2 rounded-md cursor-pointer"
+            type="submit"
+          >
+            Save Flash Sale
+          </button>
+        </div>
+      </main>
+
+      <!-- Active Flash Sales -->
+      <main
+        id="manage-flash-sale"
+        class="flash-sale-section bg-white border border-gray-200 rounded-lg px-6 py-4 mt-6"
+      >
+        <h3 class="text-2xl font-bold text-gray-800">Active Flash Sales</h3>
+        <div class="overflow-x-auto flex justify-center mt-5">
+          <table
+            class="min-w-[100%] bg-white border border-gray-200 shadow-md rounded-lg overflow-hidden divide-y divide-gray-200"
+          >
+            <thead class="bg-gray-100 text-gray-700">
+              <tr>
+                <th class="px-6 py-3 text-left text-sm font-semibold">Name</th>
+                <th class="px-6 py-3 text-left text-sm font-semibold">Type</th>
+                <th class="px-6 py-3 text-left text-sm font-semibold">
+                  Discount
+                </th>
+                <th class="px-6 py-3 text-left text-sm font-semibold">
+                  Status
+                </th>
+                <th class="px-6 py-3 text-left text-sm font-semibold">
+                  Products
+                </th>
+                <th class="px-6 py-3 text-left text-sm font-semibold">
+                  End Time
+                </th>
+                <th class="px-6 py-3 text-left text-sm font-semibold">
+                  Actions
+                </th>
+              </tr>
+            </thead>
+
+            <tbody class="text-sm divide-y divide-gray-200">
+              <tr class="hover:bg-gray-50">
+                <td class="px-6 py-3">24-Hour Flash Sale</td>
+                <td class="px-6 py-3">Percentage</td>
+                <td class="px-6 py-3">25%</td>
+                <td class="px-6 py-3">
+                  <div
+                    class="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-green-100 text-green-800 hover:bg-green-100"
+                  >
+                    Active
+                  </div>
+                </td>
+                <td>All Products</td>
+                <td>2023-12-31 23:59:59</td>
+                <td class="px-6 py-3">
+                  <div class="flex space-x-2">
+                    <button class="text-gray-500 hover:text-blue-600 cursor-pointer">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
+                        <path
+                          d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"
+                        ></path>
+                        <path d="m15 5 4 4"></path>
+                      </svg></button
+                    ><button class="text-gray-500 hover:text-red-600 cursor-pointer">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
+                        <path d="M3 6h18"></path>
+                        <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path>
+                        <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"></path>
+                        <path d="M10 11v6"></path>
+                        <path d="M14 11v6"></path>
+                      </svg>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+
+              <tr class="hover:bg-gray-50">
+                <td class="px-6 py-3">Weekend Special</td>
+                <td class="px-6 py-3">Fixed Amount</td>
+                <td class="px-6 py-3">$15</td>
+                <td class="px-6 py-3">
+                  <div
+                    class="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-blue-100 text-blue-800 hover:bg-blue-100"
+                  >
+                    Scheduled
+                  </div>
+                </td>
+                <td>Summer Collection</td>
+                <td>2024-01-15 23:59:59</td>
+                <td class="px-6 py-3">
+                  <div class="flex space-x-2">
+                    <button class="text-gray-500 hover:text-blue-600 cursor-pointer">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
+                        <path
+                          d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"
+                        ></path>
+                        <path d="m15 5 4 4"></path>
+                      </svg></button
+                    ><button class="text-gray-500 hover:text-red-600 cursor-pointer">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
+                        <path d="M3 6h18"></path>
+                        <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path>
+                        <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"></path>
+                        <path d="M10 11v6"></path>
+                        <path d="M14 11v6"></path>
+                      </svg>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </main>
+    </section>
+    <!-- Flash Sale Section Ends Here -->
+
+    <!-- Customer Section Starts Here -->
+    <section id="customer" class="px-14 pt-5 pb-30 bg-[#f9fafb]">
+      <div class="flex justify-between items-center">
+        <h2 class="text-2xl font-bold text-gray-800">
+          Customer-Specific Discounts
+        </h2>
+
+        <button
+          id="create-new-button"
+          class="flex items-center justify-between cursor-pointer bg-black hover:bg-gray-700 px-3.5 py-2 rounded-md text-white"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="mr-2"
+          >
+            <path d="M5 12h14"></path>
+            <path d="M12 5v14"></path>
+          </svg>
+          <span class="tracking-tight text-[15px]">Create New</span>
+        </button>
+      </div>
+
+      <nav
+        class="bg-[#f5f5f5] w-full flex justify-between items-center mt-6 box-content p-1 text-sm rounded-md text-gray-600"
+      >
+        <button
+          type="button"
+          class="customer-discount-btn cursor-pointer box-border w-6/12 h-8 rounded bg-white text-black"
+          data-target="create-customer-discount"
+        >
+          Create Discount</button
+        ><button
+          type="button"
+          class="customer-discount-btn cursor-pointer box-border w-6/12 h-8 rounded bg-transparent text-gray-600"
+          data-target="manage-customer-discount"
+        >
+          Manage Discount
+        </button>
+      </nav>
+
+      <!-- Create Customer Discount -->
+      <main
+        id="create-customer-discount"
+        class="customer-discount-section bg-white border border-gray-200 rounded-lg px-6 py-4 mt-6"
+      >
+        <h3 class="text-2xl font-bold text-gray-800">
+          Create Customer-Specific Discount
+        </h3>
+
+        <form action="" method="" class="mt-6 text-sm">
+          <!-- First Row -->
+          <div class="flex justify-between items-center gap-6 w-full mt-4">
+            <div class="w-full">
+              <label for="customer-discount-name" class="block"
+                >Discount Name</label
+              >
+              <input
+                type="text"
+                name=""
+                id="customer-discount-name"
+                placeholder="First-Time Customer Discount"
+                class="w-full border border-gray-200 focus:outline-none focus:ring-2 focus:ring-purple-600 px-3 py-1.5 rounded-md"
+              />
+            </div>
+
+            <div class="w-full">
+              <label for="customer-type" class="block">Customer Type</label>
+              <select
+                name=""
+                id="customer-type"
+                class="w-full border border-gray-200 focus:outline-none focus:ring-2 focus:ring-purple-600 px-3 py-1.5 rounded-md"
+              >
+                <option value="1" selected="">First-Time Customers</option>
+                <option value="2">Returning Customers</option>
+                <option value="3">VIP Members</option>
+                <option value="4">Email Subscribers</option>
+                <option value="5">Birthday Customers</option>
+                <option value="6">Custom Segment</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Second Row -->
+          <div class="flex justify-between items-center gap-6 w-full mt-4">
+            <div class="w-full">
+              <p>Discount Type</p>
+              <div class="flex items-center gap-2 mt-2">
+                <input
+                  type="radio"
+                  role="radio"
+                  id="customer-percentage"
+                  name="discount-type"
+                  checked
+                /><label for="customer-percentage"
+                  >Percentage (e.g., 15% off)</label
+                >
+              </div>
+              <div class="flex items-center gap-2">
+                <input
+                  type="radio"
+                  role="radio"
+                  id="customer-fixed"
+                  name="discount-type"
+                /><label for="customer-fixed"
+                  >Fixed Amount (e.g., $10 off)</label
+                >
+              </div>
+              <div class="flex items-center gap-2">
+                <input
+                  type="radio"
+                  role="radio"
+                  id="customer-free-shipping"
+                  name="discount-type"
+                /><label for="customer-free-shipping">Free Shipping</label>
+              </div>
+            </div>
+
+            <div class="w-full">
+              <label for="customer-discount-products" class="block"
+                >Apply to Products/Collections</label
+              >
+              <select
+                name=""
+                id="customer-discount-products"
+                class="w-full border border-gray-200 focus:outline-none focus:ring-2 focus:ring-purple-600 px-3 py-1.5 rounded-md"
+              >
+                <option value="1" selected="">All Products</option>
+                <option value="2">Specific Products</option>
+                <option value="3">Specific Collections</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Third Row -->
+          <div class="flex justify-between items-center gap-6 w-full mt-4">
+            <div class="w-full">
+              <label for="customer-discount-amount" class="block"
+                >Discount Amount</label
+              >
+              <div class="flex">
+                <input
+                  type="number"
+                  name="discount-name"
+                  id="customer-discount-amount"
+                  value="15"
+                  class="w-full border border-gray-200 focus:outline-none focus:ring-2 focus:ring-purple-600 px-3 py-1.5 rounded-md"
+                />
+                <div
+                  class="border border-gray-200 bg-gray-400 rounded-md px-3 py-1.5"
+                  style="background-color: gainsboro; margin-left: -1px"
+                >
+                  %
+                </div>
+              </div>
+            </div>
+
+            <div class="w-full">
+              <label for="customer-discount-start-date" class="block"
+                >Start Date</label
+              >
+              <input
+                type="date"
+                name=""
+                id="customer-discount-start-date"
+                class="w-full border border-gray-200 focus:outline-none focus:ring-2 focus:ring-purple-600 px-3 py-1.5 rounded-md"
+              />
+            </div>
+          </div>
+
+          <!-- Fourth Row -->
+          <div class="flex justify-between items-center gap-6 w-full mt-6">
+            <div class="w-full space-y-2">
+              <div class="flex items-center space-x-2">
+                <label class="relative inline-flex items-center cursor-pointer">
+                  <input
+                    type="checkbox"
+                    checked
+                    value=""
+                    class="sr-only peer"
+                    id="auto-apply-toggle"
+                  />
+                  <div
+                    class="w-11 h-6 bg-gray-300 peer-focus:outline-none rounded-full peer peer-checked:bg-black transition duration-200"
+                  ></div>
+                  <div
+                    class="absolute left-0.5 top-0.5 w-5 h-5 bg-white rounded-full transition-transform duration-200 transform peer-checked:translate-x-full"
+                  ></div>
+                </label>
+                <label for="auto-apply-toggle" class="text-gray-800">
+                  Auto-apply discount (no code required)
+                </label>
+              </div>
+
+              <div class="flex items-center space-x-2">
+                <label class="relative inline-flex items-center cursor-pointer">
+                  <input
+                    type="checkbox"
+                    value=""
+                    class="sr-only peer"
+                    id="auto-apply-toggle"
+                  />
+                  <div
+                    class="w-11 h-6 bg-gray-300 peer-focus:outline-none rounded-full peer peer-checked:bg-black transition duration-200"
+                  ></div>
+                  <div
+                    class="absolute left-0.5 top-0.5 w-5 h-5 bg-white rounded-full transition-transform duration-200 transform peer-checked:translate-x-full"
+                  ></div>
+                </label>
+                <label for="auto-apply-toggle" class="text-gray-800">
+                  One-time use per customer
+                </label>
+              </div>
+
+              <div class="flex items-center space-x-2">
+                <label class="relative inline-flex items-center cursor-pointer">
+                  <input
+                    type="checkbox"
+                    value=""
+                    checked
+                    class="sr-only peer"
+                    id="auto-apply-toggle"
+                  />
+                  <div
+                    class="w-11 h-6 bg-gray-300 peer-focus:outline-none rounded-full peer peer-checked:bg-black transition duration-200"
+                  ></div>
+                  <div
+                    class="absolute left-0.5 top-0.5 w-5 h-5 bg-white rounded-full transition-transform duration-200 transform peer-checked:translate-x-full"
+                  ></div>
+                </label>
+                <label for="auto-apply-toggle" class="text-gray-800">
+                  Show special badge for eligible customers
+                </label>
+              </div>
+            </div>
+
+            <div class="w-full">
+              <label for="customer-discount-end-date" class="block"
+                >End Date (Optional)</label
+              >
+              <input
+                type="date"
+                name=""
+                id="customer-discount-end-date"
+                class="w-full border border-gray-200 focus:outline-none focus:ring-2 focus:ring-purple-600 px-3 py-1.5 rounded-md"
+              />
+            </div>
+          </div>
+
+          <!-- Fifth Row -->
+          <div class="w-full mt-8">
+            <h4 class="text-[15px]">Additional Options</h4>
+            <div class="mt-2 space-y-1">
+              <div class="flex items-center gap-2">
+                <input type="checkbox" name="" id="welcome-email" /><label
+                  for="welcome-email"
+                  >Send welcome email with discount code</label
+                >
+              </div>
+              <div class="flex items-center gap-2">
+                <input type="checkbox" name="" id="account-creation" /><label
+                  for="account-creation"
+                  >Show popup for account creation</label
+                >
+              </div>
+              <div class="flex items-center gap-2">
+                <input type="checkbox" name="" id="other-discounts" /><label
+                  for="other-discounts"
+                  >Allow combining with other discounts</label
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- Sixth Row -->
+          <div
+            class="preview-wrapper bg-[#f9fafb] w-full px-4 py-3 rounded-lg mt-6"
+          >
+            <h4 class="text-gray-800 text-lg">Preview: Customer Badge</h4>
+            <div
+              class="flex items-center gap-2 mt-2 p-4 border border-gray-200 rounded-md bg-white"
+            >
+              <span
+                class="rounded-full px-2.5 py-0.5 text-xs font-bold text-purple-800"
+                style="background-color: #f3e8ff; color: #6b21a8"
+              >
+                VIP MEMBER
+              </span>
+              <p>You're eligible for a 15% discount!</p>
+            </div>
+          </div>
+        </form>
+
+        <div class="flex items-center justify-end gap-3 mt-6 pb-3 text-[15px]">
+          <button
+            class="border border-gray-200 hover:bg-gray-100 px-4 py-2 rounded-md cursor-pointer"
+          >
+            Cancel
+          </button>
+          <button
+            class="border border-gray-200 bg-black text-white px-4 py-2 rounded-md cursor-pointer"
+            type="submit"
+          >
+            Save Discount
+          </button>
+        </div>
+      </main>
+
+      <!-- Active Customer Discount -->
+      <main
+        id="manage-customer-discount"
+        class="customer-discount-section bg-white border border-gray-200 rounded-lg px-6 py-4 mt-6"
+      >
+        <h3 class="text-2xl font-bold text-gray-800">
+          Active Customer Discounts
+        </h3>
+        <div class="overflow-x-auto flex justify-center mt-5">
+          <table
+            class="min-w-[100%] bg-white border border-gray-200 shadow-md rounded-lg overflow-hidden divide-y divide-gray-200"
+          >
+            <thead class="bg-gray-100 text-gray-700">
+              <tr>
+                <th class="px-6 py-3 text-left text-sm font-semibold">Name</th>
+                <th class="px-6 py-3 text-left text-sm font-semibold">Type</th>
+                <th class="px-6 py-3 text-left text-sm font-semibold">
+                  Discount
+                </th>
+                <th class="px-6 py-3 text-left text-sm font-semibold">
+                  Status
+                </th>
+                <th class="px-6 py-3 text-left text-sm font-semibold">
+                  Customer Type
+                </th>
+                <th class="px-6 py-3 text-left text-sm font-semibold">
+                  Actions
+                </th>
+              </tr>
+            </thead>
+
+            <tbody class="text-sm divide-y divide-gray-200">
+              <tr class="hover:bg-gray-50">
+                <td class="px-6 py-3">First-Time Customer Discount</td>
+                <td class="px-6 py-3">Percentage</td>
+                <td class="px-6 py-3">15%</td>
+                <td class="px-6 py-3">
+                  <div
+                    class="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-green-100 text-green-800 hover:bg-green-100"
+                  >
+                    Active
+                  </div>
+                </td>
+                <td class="px-6 py-3">First-Time Customers</td>
+                <td class="px-6 py-3">
+                  <div class="flex space-x-2">
+                    <button class="text-gray-500 hover:text-blue-600 cursor-pointer">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
+                        <path
+                          d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"
+                        ></path>
+                        <path d="m15 5 4 4"></path>
+                      </svg></button
+                    ><button class="text-gray-500 hover:text-red-600 cursor-pointer">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
+                        <path d="M3 6h18"></path>
+                        <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path>
+                        <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"></path>
+                        <path d="M10 11v6"></path>
+                        <path d="M14 11v6"></path>
+                      </svg>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+
+              <tr class="hover:bg-gray-50">
+                <td class="px-6 py-3">VIP Member Discount</td>
+                <td class="px-6 py-3">Percentage</td>
+                <td class="px-6 py-3">20%</td>
+                <td class="px-6 py-3">
+                  <div
+                    class="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-green-100 text-green-800 hover:bg-green-100"
+                  >
+                    Active
+                  </div>
+                </td>
+                <td class="px-6 py-3">VIP Members</td>
+                <td class="px-6 py-3">
+                  <div class="flex space-x-2">
+                    <button class="text-gray-500 hover:text-blue-600 cursor-pointer">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
+                        <path
+                          d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"
+                        ></path>
+                        <path d="m15 5 4 4"></path>
+                      </svg></button
+                    ><button class="text-gray-500 hover:text-red-600 cursor-pointer">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
+                        <path d="M3 6h18"></path>
+                        <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path>
+                        <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"></path>
+                        <path d="M10 11v6"></path>
+                        <path d="M14 11v6"></path>
+                      </svg>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </main>
+    </section>
+    <!-- Customer Section Ends Here -->
+
+    <!-- Bundle Section Starts Here -->
+    <section id="bundle" class="px-14 pt-5 pb-30 bg-[#f9fafb]">
+      <div class="flex justify-between items-center">
+        <h2 class="text-2xl font-bold text-gray-800">
+          Bundle & Combo Discounts
+        </h2>
+
+        <button
+          id="create-new-button"
+          class="flex items-center justify-between cursor-pointer bg-black hover:bg-gray-700 px-3.5 py-2 rounded-md text-white"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="mr-2"
+          >
+            <path d="M5 12h14"></path>
+            <path d="M12 5v14"></path>
+          </svg>
+          <span class="tracking-tight text-[15px]">Create New</span>
+        </button>
+      </div>
+
+      <nav
+        class="bg-[#f5f5f5] w-full flex justify-between items-center mt-6 box-content p-1 text-sm rounded-md text-gray-600"
+      >
+        <button
+          type="button"
+          class="bundle-btn cursor-pointer box-border w-6/12 h-8 rounded bg-white text-black"
+          data-target="create-bundle"
+        >
+          Create Bundle</button
+        ><button
+          type="button"
+          class="bundle-btn cursor-pointer box-border w-6/12 h-8 rounded bg-transparent text-gray-600"
+          data-target="manage-bundle"
+        >
+          Manage Bundle
+        </button>
+      </nav>
+
+      <!-- Create Bundle -->
+      <main
+        id="create-bundle"
+        class="bundle-section bg-white border border-gray-200 rounded-lg px-6 py-4 mt-6"
+      >
+        <h3 class="text-2xl font-bold text-gray-800">Create Bundle Discount</h3>
+
+        <form action="" method="" class="mt-6 text-sm">
+          <!-- First Row -->
+          <div class="flex justify-between items-center gap-6 w-full mt-4">
+            <div class="w-full">
+              <label for="bundle-name" class="block">Bundle Name</label>
+              <input
+                type="text"
+                name=""
+                id="bundle-name"
+                placeholder="Summer Outfit Bundle"
+                class="w-full border border-gray-200 focus:outline-none focus:ring-2 focus:ring-purple-600 px-3 py-1.5 rounded-md"
+              />
+            </div>
+
+            <div class="w-full">
+              <label for="bundle-type" class="block">Bundle Type</label>
+              <select
+                name=""
+                id="bundle-type"
+                class="w-full border border-gray-200 focus:outline-none focus:ring-2 focus:ring-purple-600 px-3 py-1.5 rounded-md"
+              >
+                <option value="1" selected="">
+                  Fixed Bundle (Specific Products)
+                </option>
+                <option value="2">
+                  Mix & Match (Any Product from Categories)
+                </option>
+                <option value="3">Frequently Brougth Together</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Second Row -->
+          <div class="flex justify-between items-center gap-6 w-full mt-4">
+            <div class="w-full">
+              <p>Discount Type</p>
+              <div class="flex items-center gap-2 mt-2">
+                <input
+                  type="radio"
+                  role="radio"
+                  id="bundle-percentage"
+                  name="discount-type"
+                  checked
+                /><label for="bundle-percentage"
+                  >Percentage (e.g., 20% off)</label
+                >
+              </div>
+              <div class="flex items-center gap-2">
+                <input
+                  type="radio"
+                  role="radio"
+                  id="bundle-fixed"
+                  name="discount-type"
+                /><label for="bundle-fixed">Fixed Amount (e.g., $25 off)</label>
+              </div>
+              <div class="flex items-center gap-2">
+                <input
+                  type="radio"
+                  role="radio"
+                  id="set-bundle-price"
+                  name="discount-type"
+                /><label for="set-bundle-price"
+                  >Set Bundle Price (e.g., $99.99 for all)</label
+                >
+              </div>
+            </div>
+
+            <div class="w-full">
+              <label for="bundle-product" class="block"
+                >Minimum Products Required</label
+              >
+              <input
+                type="number"
+                name=""
+                id="bundle-product"
+                value="3"
+                class="w-full border border-gray-200 focus:outline-none focus:ring-2 focus:ring-purple-600 px-3 py-1.5 rounded-md"
+              />
+            </div>
+          </div>
+
+          <!-- Third Row -->
+          <div class="flex justify-between items-center gap-6 w-full mt-4">
+            <div class="w-full">
+              <label for="customer-discount-amount" class="block"
+                >Discount Amount</label
+              >
+              <div class="flex">
+                <input
+                  type="number"
+                  name="discount-name"
+                  id="customer-discount-amount"
+                  value="20"
+                  class="w-full border border-gray-200 focus:outline-none focus:ring-2 focus:ring-purple-600 px-3 py-1.5 rounded-md"
+                />
+                <div
+                  class="border border-gray-200 bg-gray-400 rounded-md px-3 py-1.5"
+                  style="background-color: gainsboro; margin-left: -1px"
+                >
+                  %
+                </div>
+              </div>
+            </div>
+
+            <div class="w-full">
+              <label for="bundle-start-date" class="block">Start Date</label>
+              <input
+                type="date"
+                name=""
+                id="bundle-start-date"
+                class="w-full border border-gray-200 focus:outline-none focus:ring-2 focus:ring-purple-600 px-3 py-1.5 rounded-md"
+              />
+            </div>
+          </div>
+
+          <!-- Fourth Row -->
+          <div class="flex justify-between items-center gap-6 w-full mt-6">
+            <div class="w-full space-y-2">
+              <div class="flex items-center space-x-2">
+                <label class="relative inline-flex items-center cursor-pointer">
+                  <input
+                    type="checkbox"
+                    checked
+                    value=""
+                    class="sr-only peer"
+                    id="auto-apply-toggle"
+                  />
+                  <div
+                    class="w-11 h-6 bg-gray-300 peer-focus:outline-none rounded-full peer peer-checked:bg-black transition duration-200"
+                  ></div>
+                  <div
+                    class="absolute left-0.5 top-0.5 w-5 h-5 bg-white rounded-full transition-transform duration-200 transform peer-checked:translate-x-full"
+                  ></div>
+                </label>
+                <label for="auto-apply-toggle" class="text-gray-800">
+                  Auto-apply discount (no code required)
+                </label>
+              </div>
+
+              <div class="flex items-center space-x-2">
+                <label class="relative inline-flex items-center cursor-pointer">
+                  <input
+                    type="checkbox"
+                    value=""
+                    checked
+                    class="sr-only peer"
+                    id="auto-apply-toggle"
+                  />
+                  <div
+                    class="w-11 h-6 bg-gray-300 peer-focus:outline-none rounded-full peer peer-checked:bg-black transition duration-200"
+                  ></div>
+                  <div
+                    class="absolute left-0.5 top-0.5 w-5 h-5 bg-white rounded-full transition-transform duration-200 transform peer-checked:translate-x-full"
+                  ></div>
+                </label>
+                <label for="auto-apply-toggle" class="text-gray-800">
+                  Show "Frequently Bought Together" on product pages
+                </label>
+              </div>
+
+              <div class="flex items-center space-x-2">
+                <label class="relative inline-flex items-center cursor-pointer">
+                  <input
+                    type="checkbox"
+                    value=""
+                    checked
+                    class="sr-only peer"
+                    id="auto-apply-toggle"
+                  />
+                  <div
+                    class="w-11 h-6 bg-gray-300 peer-focus:outline-none rounded-full peer peer-checked:bg-black transition duration-200"
+                  ></div>
+                  <div
+                    class="absolute left-0.5 top-0.5 w-5 h-5 bg-white rounded-full transition-transform duration-200 transform peer-checked:translate-x-full"
+                  ></div>
+                </label>
+                <label for="auto-apply-toggle" class="text-gray-800">
+                  Add "Add All to Cart" button
+                </label>
+              </div>
+            </div>
+
+            <div class="w-full">
+              <label for="customer-discount-end-date" class="block"
+                >End Date (Optional)</label
+              >
+              <input
+                type="date"
+                name=""
+                id="customer-discount-end-date"
+                class="w-full border border-gray-200 focus:outline-none focus:ring-2 focus:ring-purple-600 px-3 py-1.5 rounded-md"
+              />
+            </div>
+          </div>
+
+          <!-- Fifth Row -->
+          <div>
+            <div class="flex justify-between items-center mt-5">
+              <span style="font-size: 16px">Bundle Products</span>
+              <button
+                id="add-product-btn"
+                class="border border-gray-200 px-3 py-2 rounded-md cursor-pointer"
+              >
+                Add Products
+              </button>
+            </div>
+
+            <div class="bg-[#f9fafb] mt-4 px-2 py-3 rounded-lg">
+              <table              
+              class="bundle-product-wrapper w-full rounded-lg"
+            >
+              <!-- Table Head -->
+              <thead class="text-left">
+                <tr>
+                  <th style="width: 40%" class="px-3 pb-3">Product</th>
+                  <th style="width: 25%" class="px-3 pb-3">Regular Price</th>
+                  <th style="width: 25%" class="px-3 pb-3">Bundle Price</th>
+                  <th style="width: 10%" class="px-3 pb-3 text-right invisible">
+                    Action
+                  </th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <!-- First Row -->
+                <tr class="py-2">
+                  <td class="px-3 pt-3" style="width: 40%">
+                    <input
+                      type="text"
+                      name=""
+                      id=""
+                      value="T-Shirt"
+                      placeholder="Enter product name"
+                      class="w-full block border border-gray-200 rounded-md px-3 py-2 bg-white"
+                    />
+                  </td>
+                  <td class="px-3 pt-3" style="width: 25%">
+                    <div class="flex">
+                      <div
+                        style="
+                          background-color: #f3f4f6;
+                          border-end-start-radius: 6px;
+                          border-start-start-radius: 6px;
+                          border-right: none;
+                          font-size: 16px;
+                        "
+                        class="px-2 py-2 border border-gray-200 font-semibold"
+                      >
+                        $
+                      </div>
+                      <input
+                        type="number"
+                        name=""
+                        id=""
+                        value="$29.99"
+                        placeholder="Enter regular price"
+                        style="
+                          border-end-end-radius: 6px;
+                          border-start-end-radius: 6px;
+                        "
+                        class="w-full block border border-gray-200 px-3 py-2 bg-white"
+                      />
+                    </div>
+                  </td>
+                  <td class="px-3 pt-3" style="width: 25%">
+                    <div class="flex">
+                      <div
+                        style="
+                          background-color: #f3f4f6;
+                          border-end-start-radius: 6px;
+                          border-start-start-radius: 6px;
+                          border-right: none;
+                          font-size: 16px;
+                        "
+                        class="px-2 py-2 border border-gray-200 font-semibold"
+                      >
+                        $
+                      </div>
+                      <input
+                        type="number"
+                        name=""
+                        id=""
+                        value="$23.99"
+                        placeholder="Enter bundle price"
+                        style="
+                          border-end-end-radius: 6px;
+                          border-start-end-radius: 6px;
+                        "
+                        class="w-full block border border-gray-200 px-3 py-2 bg-white"
+                      />
+                    </div>
+                  </td>
+                  <td class="px-3 pt-3" style="width: 10%">
+                    <div class="text-right">
+                      <button
+                        type="button"
+                        class="text-gray-500 hover:text-red-600 cursor-pointer px-2 py-2 delete-btn"
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="16"
+                          height="16"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          class="float-end"
+                        >
+                          <path d="M3 6h18"></path>
+                          <path
+                            d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"
+                          ></path>
+                          <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"></path>
+                          <path d="M10 11v6"></path>
+                          <path d="M14 11v6"></path>
+                        </svg>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+
+                <!-- Second Row -->
+                <tr class="py-2">
+                  <td class="px-3 pt-3" style="width: 40%">
+                    <input
+                      type="text"
+                      name=""
+                      id=""
+                      value="Jeans"
+                      placeholder="Enter product name"
+                      class="w-full block border border-gray-200 rounded-md px-3 py-2 bg-white"
+                    />
+                  </td>
+                  <td class="px-3 pt-3" style="width: 25%">
+                    <div class="flex">
+                      <div
+                        style="
+                          background-color: #f3f4f6;
+                          border-end-start-radius: 6px;
+                          border-start-start-radius: 6px;
+                          border-right: none;
+                          font-size: 16px;
+                        "
+                        class="px-2 py-2 border border-gray-200 font-semibold"
+                      >
+                        $
+                      </div>
+                      <input
+                        type="number"
+                        name=""
+                        id=""
+                        value="$59.99"
+                        placeholder="Enter regular price"
+                        style="
+                          border-end-end-radius: 6px;
+                          border-start-end-radius: 6px;
+                        "
+                        class="w-full block border border-gray-200 px-3 py-2 bg-white"
+                      />
+                    </div>
+                  </td>
+                  <td class="px-3 pt-3" style="width: 25%">
+                    <div class="flex">
+                      <div
+                        style="
+                          background-color: #f3f4f6;
+                          border-end-start-radius: 6px;
+                          border-start-start-radius: 6px;
+                          border-right: none;
+                          font-size: 16px;
+                        "
+                        class="px-2 py-2 border border-gray-200 font-semibold"
+                      >
+                        $
+                      </div>
+                      <input
+                        type="number"
+                        name=""
+                        id=""
+                        value="$47.99"
+                        placeholder="Enter bundle price"
+                        style="
+                          border-end-end-radius: 6px;
+                          border-start-end-radius: 6px;
+                        "
+                        class="w-full block border border-gray-200 px-3 py-2 bg-white"
+                      />
+                    </div>
+                  </td>
+                  <td class="px-3 pt-3" style="width: 10%">
+                    <div class="text-right">
+                      <button
+                        type="button"
+                        class="text-gray-500 hover:text-red-600 cursor-pointer px-2 py-2 delete-btn"
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="16"
+                          height="16"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          class="float-end"
+                        >
+                          <path d="M3 6h18"></path>
+                          <path
+                            d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"
+                          ></path>
+                          <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"></path>
+                          <path d="M10 11v6"></path>
+                          <path d="M14 11v6"></path>
+                        </svg>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+
+                <!-- Third/Last Row -->
+                <tr class="py-2">
+                  <td class="px-3 pt-3" style="width: 40%">
+                    <input
+                      type="text"
+                      name=""
+                      id=""
+                      value="Shoes"
+                      placeholder="Enter product name"
+                      class="w-full block border border-gray-200 rounded-md px-3 py-2 bg-white"
+                    />
+                  </td>
+                  <td class="px-3 pt-3" style="width: 25%">
+                    <div class="flex">
+                      <div
+                        style="
+                          background-color: #f3f4f6;
+                          border-end-start-radius: 6px;
+                          border-start-start-radius: 6px;
+                          border-right: none;
+                          font-size: 16px;
+                        "
+                        class="px-2 py-2 border border-gray-200 font-semibold"
+                      >
+                        $
+                      </div>
+                      <input
+                        type="number"
+                        name=""
+                        id=""
+                        value="$89.99"
+                        placeholder="Enter regular price"
+                        style="
+                          border-end-end-radius: 6px;
+                          border-start-end-radius: 6px;
+                        "
+                        class="w-full block border border-gray-200 px-3 py-2 bg-white"
+                      />
+                    </div>
+                  </td>
+                  <td class="px-3 pt-3" style="width: 25%">
+                    <div class="flex">
+                      <div
+                        style="
+                          background-color: #f3f4f6;
+                          border-end-start-radius: 6px;
+                          border-start-start-radius: 6px;
+                          border-right: none;
+                          font-size: 16px;
+                        "
+                        class="px-2 py-2 border border-gray-200 font-semibold"
+                      >
+                        $
+                      </div>
+                      <input
+                        type="number"
+                        name=""
+                        id=""
+                        value="$71.99"
+                        placeholder="Enter bundle price"
+                        style="
+                          border-end-end-radius: 6px;
+                          border-start-end-radius: 6px;
+                        "
+                        class="w-full block border border-gray-200 px-3 py-2 bg-white"
+                      />
+                    </div>
+                  </td>
+                  <td class="px-3 pt-3" style="width: 10%">
+                    <div class="text-right">
+                      <button
+                        type="button"
+                        class="text-gray-500 hover:text-red-600 cursor-pointer px-2 py-2 delete-btn"
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="16"
+                          height="16"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          class="float-end"
+                        >
+                          <path d="M3 6h18"></path>
+                          <path
+                            d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"
+                          ></path>
+                          <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"></path>
+                          <path d="M10 11v6"></path>
+                          <path d="M14 11v6"></path>
+                        </svg>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            </div>
+          </div>
+
+          <!-- Sixth Row -->
+          <div
+            class="bundle-summary-wrapper bg-[#f9fafb] w-full px-4 py-3 rounded-lg mt-6"
+          >
+            <h4 class="text-gray-800" style="font-size: 16px">
+              Bundle Summary
+            </h4>
+
+            <div class="mt-2 space-y-1">
+              <div class="flex items-center justify-between">
+                <span>Regular Price Total:</span>
+                <span>$179.97</span>
+              </div>
+              <div class="flex items-center justify-between">
+                <span>Bundle Price:</span>
+                <span>$143.98</span>
+              </div>
+              <div class="flex items-center justify-between">
+                <span>Customer Savings:</span>
+                <span class="text-green-600">$35.99 (20%)</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Seventh/Last Row -->
+          <div
+            class="preview-wrapper bg-[#f9fafb] w-full px-4 py-3 rounded-lg mt-6"
+          >
+            <h4 class="text-gray-800" style="font-size: 16px">
+              Preview: Frequently Bought Together
+            </h4>
+            <div
+              class="flex flex-col justify-center mt-2 p-4 border border-gray-200 rounded-md bg-white"
+            >
+              <p style="font-size: 16px">Frequently Bought Together</p>
+              <div class="flex gap-4 py-4 border-b border-gray-200">
+                <div class="flex flex-col items-center">
+                  <div
+                    style="
+                      background-color: #eaeaea;
+                      color: white;
+                      box-sizing: border-box;
+                      width: 65px;
+                      height: 65px;
+                    "
+                    class="rounded-md flex items-center justify-center text-xl font-bold"
+                  ></div>
+                  <span class="text-xs mt-1">T-Shirt</span>
+                  <span class="text-xs mt-0.5">$29.99</span>
+                </div>
+
+                <div class="flex flex-col items-center">
+                  <div
+                    style="
+                      background-color: #eaeaea;
+                      color: white;
+                      box-sizing: border-box;
+                      width: 65px;
+                      height: 65px;
+                    "
+                    class="rounded-md flex items-center justify-center text-xl font-bold"
+                  ></div>
+                  <span class="text-xs mt-1">Jeans</span>
+                  <span class="text-xs mt-0.5">$59.99</span>
+                </div>
+
+                <div class="flex flex-col items-center">
+                  <div
+                    style="
+                      background-color: #eaeaea;
+                      color: white;
+                      box-sizing: border-box;
+                      width: 65px;
+                      height: 65px;
+                    "
+                    class="rounded-md flex items-center justify-center text-xl font-bold"
+                  ></div>
+                  <span class="text-xs mt-1">Shoes</span>
+                  <span class="text-xs mt-0.5">$89.99</span>
+                </div>
+              </div>
+
+              <div
+                class="flex items-center justify-between border-gray-200"
+                style="padding-top: 12px"
+              >
+                <div>
+                  <p><s style="color: #a2a2a2">$179.97</s> $143.98</p>
+                  <p class="text-green-600 text-xs" style="margin-top: -2px">
+                    Save 20% when bought together
+                  </p>
+                </div>
+
+                <div>
+                  <button
+                    type="button"
+                    class="border border-gray-200 bg-black text-white px-4 py-2 rounded-md cursor-pointer"
+                  >
+                    Add All to Cart
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+
+        <div class="flex items-center justify-end gap-3 mt-6 pb-3 text-[15px]">
+          <button
+            class="border border-gray-200 hover:bg-gray-100 px-4 py-2 rounded-md cursor-pointer"
+          >
+            Cancel
+          </button>
+          <button
+            class="border border-gray-200 bg-black text-white px-4 py-2 rounded-md cursor-pointer"
+            type="submit"
+          >
+            Save Bundle
+          </button>
+        </div>
+      </main>
+
+      <!-- Active Bundle -->
+      <main
+        id="manage-bundle"
+        class="bundle-section bg-white border border-gray-200 rounded-lg px-6 py-4 mt-6"
+      >
+        <h3 class="text-2xl font-bold text-gray-800">
+          Active Bundle Discounts
+        </h3>
+        <div class="overflow-x-auto flex justify-center mt-5">
+          <table
+            class="min-w-[100%] bg-white border border-gray-200 shadow-md rounded-lg overflow-hidden divide-y divide-gray-200"
+          >
+            <thead class="bg-gray-100 text-gray-700">
+              <tr>
+                <th class="px-6 py-3 text-left text-sm font-semibold">Name</th>
+                <th class="px-6 py-3 text-left text-sm font-semibold">Type</th>
+                <th class="px-6 py-3 text-left text-sm font-semibold">
+                  Discount
+                </th>
+                <th class="px-6 py-3 text-left text-sm font-semibold">
+                  Status
+                </th>
+                <th class="px-6 py-3 text-left text-sm font-semibold">
+                  Product
+                </th>
+                <th class="px-6 py-3 text-left text-sm font-semibold">
+                  Actions
+                </th>
+              </tr>
+            </thead>
+
+            <tbody class="text-sm divide-y divide-gray-200">
+              <tr class="hover:bg-gray-50">
+                <td class="px-6 py-3">Summer Outfit Bundle</td>
+                <td class="px-6 py-3">Percentage</td>
+                <td class="px-6 py-3">20%</td>
+                <td class="px-6 py-3">
+                  <div
+                    class="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-green-100 text-green-800 hover:bg-green-100"
+                  >
+                    Active
+                  </div>
+                </td>
+                <td class="px-6 py-3">T-Shirt, Shorts, Sandals</td>
+                <td class="px-6 py-3">
+                  <div class="flex space-x-2">
+                    <button class="text-gray-500 hover:text-blue-600 cursor-pointer">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
+                        <path
+                          d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"
+                        ></path>
+                        <path d="m15 5 4 4"></path>
+                      </svg></button
+                    ><button class="text-gray-500 hover:text-red-600 cursor-pointer">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
+                        <path d="M3 6h18"></path>
+                        <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path>
+                        <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"></path>
+                        <path d="M10 11v6"></path>
+                        <path d="M14 11v6"></path>
+                      </svg>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+
+              <tr class="hover:bg-gray-50">
+                <td class="px-6 py-3">Accessories Pack</td>
+                <td class="px-6 py-3">Fixed Amount</td>
+                <td class="px-6 py-3">$25</td>
+                <td class="px-6 py-3">
+                  <div
+                    class="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-green-100 text-green-800 hover:bg-green-100"
+                  >
+                    Active
+                  </div>
+                </td>
+                <td class="px-6 py-3">Watch, Bracelet, Necklace</td>
+                <td class="px-6 py-3">
+                  <div class="flex space-x-2">
+                    <button class="text-gray-500 hover:text-blue-600 cursor-pointer">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
+                        <path
+                          d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"
+                        ></path>
+                        <path d="m15 5 4 4"></path>
+                      </svg></button
+                    ><button class="text-gray-500 hover:text-red-600 cursor-pointer">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
+                        <path d="M3 6h18"></path>
+                        <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path>
+                        <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"></path>
+                        <path d="M10 11v6"></path>
+                        <path d="M14 11v6"></path>
+                      </svg>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </main>
+    </section>
+    <!-- Bundle Section Ends Here -->
+
+    <!-- Settings Section Starts Here -->
+    <section id="settings" class="px-14 pt-5 pb-28 bg-[#f9fafb]">
+      <h2 class="text-2xl font-bold text-gray-700">Settings Section</h2>
+    </section>
+    <!-- Settings Section Ends Here -->
+
+    <!-- JavaScript Starts Here -->
+    <script>
+      // Dashboard Overview Section Starts Here
+      const buttons = document.querySelectorAll(".nav-btn");
+
+      buttons.forEach((button) => {
+        button.addEventListener("click", () => {
+          buttons.forEach((btn) => {
+            btn.classList.remove("bg-white", "text-black");
+            btn.classList.add("bg-transparent", "text-gray-600");
+          });
+
+          button.classList.remove("bg-transparent", "text-gray-600");
+          button.classList.add("bg-white", "text-black");
+        });
+      });
+
+      document.addEventListener("DOMContentLoaded", function () {
+        const buttons = document.querySelectorAll(".nav-btn");
+        const sections = document.querySelectorAll("section");
+
+        buttons.forEach((button) => {
+          button.addEventListener("click", () => {
+            const targetId = button.getAttribute("data-target");
+
+            // Hide all sections
+            sections.forEach((section) => {
+              section.style.display = "none";
+            });
+
+            // Show the selected section
+            const targetSection = document.getElementById(targetId);
+            if (targetSection) {
+              targetSection.style.display = "block";
+            }
+          });
+        });
+
+        // Initially hide all sections except overview
+        sections.forEach((section) => {
+          if (section.id !== "overview") {
+            section.style.display = "none";
+          }
+        });
+      });
+      // Dashboard Overview Section Ends Here
+
+      // Bulk Discount Section Starts Here
+      const discountButtons = document.querySelectorAll(".discount-btn");
+
+      discountButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          discountButtons.forEach((btn) => {
+            btn.classList.remove("bg-white", "text-black");
+            btn.classList.add("bg-transparent", "text-gray-600");
+          });
+
+          button.classList.remove("bg-transparent", "text-gray-600");
+          button.classList.add("bg-white", "text-black");
+        });
+      });
+
+      document.addEventListener("DOMContentLoaded", function () {
+        const buttons = document.querySelectorAll(".discount-btn");
+        const sections = document.querySelectorAll(".bulk-section");
+
+        buttons.forEach((button) => {
+          button.addEventListener("click", () => {
+            const targetId = button.getAttribute("data-target");
+
+            // Hide all sections
+            sections.forEach((section) => {
+              section.style.display = "none";
+            });
+
+            // Show the selected section
+            const targetSection = document.getElementById(targetId);
+            if (targetSection) {
+              targetSection.style.display = "block";
+            }
+          });
+        });
+
+        // Initially hide all sections except overview
+        sections.forEach((main) => {
+          if (main.id !== "create-discount") {
+            main.style.display = "none";
+          }
+        });
+      });
+
+      // Add New Row
+      document.addEventListener("DOMContentLoaded", function () {
+        const addTierBtn = document.getElementById("add-tier-btn");
+        const tiersContainer = document.getElementById("tiers-container");
+
+        // Template for a new discount tier row
+        const createTierRow = () => {
+          const row = document.createElement("div");
+          row.className = "flex justify-between items-center";
+
+          row.innerHTML = `
+        <div class="w-[45%]">
+          <label for="buy">Buy</label>
+          <input
+            type="number"
+            name="buy"
+            class="w-[80%] bg-white px-3 py-2 border border-gray-200 rounded-md"
+          />
+          <label for="buy">or more</label>
+        </div>
+
+        <div class="w-[45%]">
+          <label for="get">Get</label>
+          <input
+            type="number"
+            name="get"
+            class="w-[80%] bg-white px-3 py-2 border border-gray-200 rounded-md"
+          />
+          <label for="get">% off</label>
+        </div>
+
+        <div class="w-[10%] text-right">
+          <button class="remove-tier-btn text-gray-500 hover:text-red-500 cursor-pointer">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M3 6h18"></path>
+              <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path>
+              <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"></path>
+              <path d="M10 11v6"></path>
+              <path d="M14 11v6"></path>
+            </svg>
+          </button>
+        </div>
+      `;
+          return row;
+        };
+
+        // Add new tier row
+        addTierBtn.addEventListener("click", function (e) {
+          e.preventDefault(); // prevent default button behavior
+          tiersContainer.appendChild(createTierRow());
+        });
+
+        // Remove tier row with event delegation
+        tiersContainer.addEventListener("click", function (e) {
+          if (e.target.closest(".remove-tier-btn")) {
+            const row = e.target.closest(".flex.justify-between.items-center");
+            if (row) row.remove();
+          }
+        });
+      });
+      // Bulk Discount Section Ends Here
+
+      // BOGO Section Starts Here
+      const bogoButtons = document.querySelectorAll(".bogo-btn");
+
+      bogoButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          bogoButtons.forEach((btn) => {
+            btn.classList.remove("bg-white", "text-black");
+            btn.classList.add("bg-transparent", "text-gray-600");
+          });
+
+          button.classList.remove("bg-transparent", "text-gray-600");
+          button.classList.add("bg-white", "text-black");
+        });
+      });
+
+      document.addEventListener("DOMContentLoaded", function () {
+        const buttons = document.querySelectorAll(".bogo-btn");
+        const sections = document.querySelectorAll(".bogo-section");
+
+        buttons.forEach((button) => {
+          button.addEventListener("click", () => {
+            const targetId = button.getAttribute("data-target");
+
+            // Hide all sections
+            sections.forEach((section) => {
+              section.style.display = "none";
+            });
+
+            // Show the selected section
+            const targetSection = document.getElementById(targetId);
+            if (targetSection) {
+              targetSection.style.display = "block";
+            }
+          });
+        });
+
+        // Initially hide all sections except overview
+        sections.forEach((main) => {
+          if (main.id !== "create-bogo-deal") {
+            main.style.display = "none";
+          }
+        });
+      });
+      // BOGO Section Ends Here
+
+      // Cart Section Starts Here
+      const cartButtons = document.querySelectorAll(".cart-discount-btn");
+
+      cartButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          cartButtons.forEach((btn) => {
+            btn.classList.remove("bg-white", "text-black");
+            btn.classList.add("bg-transparent", "text-gray-600");
+          });
+
+          button.classList.remove("bg-transparent", "text-gray-600");
+          button.classList.add("bg-white", "text-black");
+        });
+      });
+
+      document.addEventListener("DOMContentLoaded", function () {
+        const buttons = document.querySelectorAll(".cart-discount-btn");
+        const sections = document.querySelectorAll(".cart-section");
+
+        buttons.forEach((button) => {
+          button.addEventListener("click", () => {
+            const targetId = button.getAttribute("data-target");
+
+            // Hide all sections
+            sections.forEach((section) => {
+              section.style.display = "none";
+            });
+
+            // Show the selected section
+            const targetSection = document.getElementById(targetId);
+            if (targetSection) {
+              targetSection.style.display = "block";
+            }
+          });
+        });
+
+        // Initially hide all sections except overview
+        sections.forEach((main) => {
+          if (main.id !== "create-cart-discount") {
+            main.style.display = "none";
+          }
+        });
+      });
+
+      document.addEventListener("DOMContentLoaded", function () {
+        const addCartTierBtn = document.getElementById("add-cart-tier-btn");
+        const cartTiersContainer = document.getElementById(
+          "cart-tiers-container"
+        );
+
+        // Initial values
+        let lastSpendValue = 200;
+        let lastGetValue = 20;
+
+        // Template for a new discount tier row
+        const createTierRow = (spendValue, getValue) => {
+          const row = document.createElement("div");
+          row.className = "flex justify-between items-center";
+
+          row.innerHTML = `
+            <div class="w-[50%]">
+              <label for="spend">Spend $</label>
+              <input
+                type="number"
+                value="${spendValue}"
+                name="buy"
+                class="w-[80%] bg-white px-3 py-2 border border-gray-200 rounded-md"
+              />
+              <label for="spend">or more</label>
+            </div>
+
+            <div class="w-[45%]">
+              <label for="get">Get $</label>
+              <input
+                type="number"
+                value="${getValue}"
+                name="get"
+                class="w-[80%] bg-white px-3 py-2 border border-gray-200 rounded-md"
+              />
+              <label for="get">off</label>
+            </div>
+
+            <div class="w-[8%] text-right">
+              <button type="button" class="remove-tier-btn text-gray-500 hover:text-red-600 cursor-pointer">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M3 6h18"></path>
+                  <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path>
+                  <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"></path>
+                  <path d="M10 11v6"></path>
+                  <path d="M14 11v6"></path>
+                </svg>
+              </button>
+            </div>
+          `;
+          return row;
+        };
+
+        // Add new tier row
+        addCartTierBtn.addEventListener("click", function (e) {
+          e.preventDefault();
+
+          const newRow = createTierRow(lastSpendValue, lastGetValue);
+          cartTiersContainer.appendChild(newRow);
+
+          // Increment values for the next row
+          lastSpendValue += 50;
+          lastGetValue += 5;
+        });
+
+        // Remove tier row with event delegation
+        cartTiersContainer.addEventListener("click", function (e) {
+          if (e.target.closest(".remove-tier-btn")) {
+            const row = e.target.closest(".flex.justify-between.items-center");
+            if (row) row.remove();
+          }
+        });
+      });
+      // Cart Section Ends Here
+
+      // Flash Sale Section Start Here
+      const flashSaleButtons = document.querySelectorAll(".flash-sale-btn");
+
+      flashSaleButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          flashSaleButtons.forEach((btn) => {
+            btn.classList.remove("bg-white", "text-black");
+            btn.classList.add("bg-transparent", "text-gray-600");
+          });
+
+          button.classList.remove("bg-transparent", "text-gray-600");
+          button.classList.add("bg-white", "text-black");
+        });
+      });
+
+      document.addEventListener("DOMContentLoaded", function () {
+        const buttons = document.querySelectorAll(".flash-sale-btn");
+        const sections = document.querySelectorAll(".flash-sale-section");
+
+        buttons.forEach((button) => {
+          button.addEventListener("click", () => {
+            const targetId = button.getAttribute("data-target");
+
+            // Hide all sections
+            sections.forEach((section) => {
+              section.style.display = "none";
+            });
+
+            // Show the selected section
+            const targetSection = document.getElementById(targetId);
+            if (targetSection) {
+              targetSection.style.display = "block";
+            }
+          });
+        });
+
+        // Initially hide all sections except overview
+        sections.forEach((main) => {
+          if (main.id !== "create-flash-sale") {
+            main.style.display = "none";
+          }
+        });
+      });
+      // Flash Sale Section Ends Here
+
+      // Customer Sections Starts Here
+      const customerDiscountButtons = document.querySelectorAll(
+        ".customer-discount-btn"
+      );
+
+      customerDiscountButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          customerDiscountButtons.forEach((btn) => {
+            btn.classList.remove("bg-white", "text-black");
+            btn.classList.add("bg-transparent", "text-gray-600");
+          });
+
+          button.classList.remove("bg-transparent", "text-gray-600");
+          button.classList.add("bg-white", "text-black");
+        });
+      });
+
+      document.addEventListener("DOMContentLoaded", function () {
+        const buttons = document.querySelectorAll(".customer-discount-btn");
+        const sections = document.querySelectorAll(
+          ".customer-discount-section"
+        );
+
+        buttons.forEach((button) => {
+          button.addEventListener("click", () => {
+            const targetId = button.getAttribute("data-target");
+
+            // Hide all sections
+            sections.forEach((section) => {
+              section.style.display = "none";
+            });
+
+            // Show the selected section
+            const targetSection = document.getElementById(targetId);
+            if (targetSection) {
+              targetSection.style.display = "block";
+            }
+          });
+        });
+
+        // Initially hide all sections except overview
+        sections.forEach((main) => {
+          if (main.id !== "create-customer-discount") {
+            main.style.display = "none";
+          }
+        });
+      });
+      // Customer Sections Ends Here
+
+      // Bundle Section Starts Here
+      const bundleButtons = document.querySelectorAll(".bundle-btn");
+
+      bundleButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          bundleButtons.forEach((btn) => {
+            btn.classList.remove("bg-white", "text-black");
+            btn.classList.add("bg-transparent", "text-gray-600");
+          });
+
+          button.classList.remove("bg-transparent", "text-gray-600");
+          button.classList.add("bg-white", "text-black");
+        });
+      });
+
+      document.addEventListener("DOMContentLoaded", function () {
+        const buttons = document.querySelectorAll(".bundle-btn");
+        const sections = document.querySelectorAll(".bundle-section");
+
+        buttons.forEach((button) => {
+          button.addEventListener("click", () => {
+            const targetId = button.getAttribute("data-target");
+
+            // Hide all sections
+            sections.forEach((section) => {
+              section.style.display = "none";
+            });
+
+            // Show the selected section
+            const targetSection = document.getElementById(targetId);
+            if (targetSection) {
+              targetSection.style.display = "block";
+            }
+          });
+        });
+
+        // Initially hide all sections except overview
+        sections.forEach((main) => {
+          if (main.id !== "create-bundle") {
+            main.style.display = "none";
+          }
+        });
+      });
+
+      // Add Product Starts Here
+      document.getElementById("add-product-btn").addEventListener("click", function (e) {
+        e.preventDefault();
+
+        const tableBody = document.querySelector(".bundle-product-wrapper tbody");
+
+        const newRow = document.createElement("tr");
+        newRow.classList.add("py-2");
+        newRow.innerHTML = `
+          <td class="px-3 pt-3" style="width: 40%">
+            <input
+              type="text"
+              placeholder="Enter product name"
+              class="w-full block border border-gray-200 rounded-md px-3 py-2 bg-white"
+            />
+          </td>
+          <td class="px-3 pt-3" style="width: 25%">
+            <div class="flex">
+              <div
+                style="background-color: #f3f4f6; border-end-start-radius: 6px; border-start-start-radius: 6px; border-right: none; font-size: 16px;"
+                class="px-2 py-2 border border-gray-200 font-semibold"
+              >$</div>
+              <input
+                type="number"
+                placeholder="Enter regular price"
+                style="border-end-end-radius: 6px; border-start-end-radius: 6px;"
+                class="w-full block border border-gray-200 px-3 py-2 bg-white"
+              />
+            </div>
+          </td>
+          <td class="px-3 pt-3" style="width: 25%">
+            <div class="flex">
+              <div
+                style="background-color: #f3f4f6; border-end-start-radius: 6px; border-start-start-radius: 6px; border-right: none; font-size: 16px;"
+                class="px-2 py-2 border border-gray-200 font-semibold"
+              >$</div>
+              <input
+                type="number"
+                placeholder="Enter bundle price"
+                style="border-end-end-radius: 6px; border-start-end-radius: 6px;"
+                class="w-full block border border-gray-200 px-3 py-2 bg-white"
+              />
+            </div>
+          </td>
+          <td class="px-3 pt-3" style="width: 10%">
+            <div class="text-right">
+              <button
+                type="button"
+                class="text-gray-500 hover:text-red-600 cursor-pointer px-2 py-2 delete-btn"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="float-end"
+                >
+                  <path d="M3 6h18"></path>
+                  <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path>
+                  <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"></path>
+                  <path d="M10 11v6"></path>
+                  <path d="M14 11v6"></path>
+                </svg>
+              </button>
+            </div>
+          </td>
+        `;
+
+        tableBody.appendChild(newRow);
+      });
+
+      // Event delegation to handle delete on dynamically added rows
+      document.querySelector(".bundle-product-wrapper tbody").addEventListener("click", function (e) {
+        if (e.target.closest(".delete-btn")) {
+          e.preventDefault();
+          
+          const row = e.target.closest("tr");
+          if (row) row.remove();
+        }
+      });
+      // Add Product Ends Here
+      // Bundle Section Ends Here
+    </script>
+    <!-- JavaScript Ends Here -->
+  </body>
+</html>
